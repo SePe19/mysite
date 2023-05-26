@@ -140,5 +140,11 @@ def picture():
     raise Exception(error)
   picture_name = str(uuid.uuid4().hex)
   picture_name = picture_name + ext
-  picture.save(f"images/tweet_images/{picture_name}")
-  return picture_name
+  
+  try:
+    import production
+    picture.save(f"/home/19/mysite/images/tweet_images/{picture_name}")
+  except:
+    picture.save(f"images/tweet_images/{picture_name}")
+  finally:
+    return picture_name
