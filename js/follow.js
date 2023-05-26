@@ -87,7 +87,7 @@ async function getFollowingCount() {
         console.log(data)
 
         if (response.ok) {
-            return data.followers
+            return data.following
         } else {
             throw new Error("Error fetching following count: Invalid response")
         }

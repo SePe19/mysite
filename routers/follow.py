@@ -78,7 +78,7 @@ def _(username):
 def _(username):
     try:
         db = dbconnection.db()
-        following = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username)).fetchone()
+        following = db.execute("SELECT user_total_following FROM users WHERE username = ?", (username)).fetchone()
         following_dict = {
             "following": following
         }
