@@ -49,9 +49,14 @@ async function getFollowerCount() {
 
         const response = await fetch(`/${username}/followers`); // Replace with the endpoint that returns the follower count
         const data = await response.json();
-        return data.count; // Assuming the response contains the count value
+
+        if (response.ok) {
+            return data.count; // Assuming the response contains the count value
+        } else {
+            throw new Error("Error fetching follower count: Invalid response");
+        }
     } catch (error) {
         console.error("Error fetching follower count:", error);
         return 0; // Return a default value or handle the error as needed
-    } // Assuming the response contains the count value
+    }
 }
