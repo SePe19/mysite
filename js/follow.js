@@ -60,6 +60,7 @@ async function getFollowerCount() {
         const username = parts[parts.length - 1]
 
         const response = await fetch(`/${username}/followers`)
+        console.log(response.json())
         const data = await response.json()
         console.log(data)
 
@@ -81,6 +82,7 @@ async function getFollowingCount() {
         const username = parts[parts.length - 1]
 
         const response = await fetch(`/${username}/following`)
+        console.log(response.json())
         const data = await response.json()
         console.log(data)
 
