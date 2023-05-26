@@ -57,6 +57,7 @@ async function getFollowerCount() {
 
         const response = await fetch(`/${username}/followers`)
         const data = await response.json();
+        console.log(data)
 
         if (response.ok) {
             return data.followers
@@ -77,6 +78,7 @@ async function getFollowingCount() {
 
         const response = await fetch(`/${username}/following`)
         const data = await response.json();
+        console.log(data)
 
         if (response.ok) {
             return data.followers
