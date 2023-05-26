@@ -43,6 +43,11 @@ async function unfollow(followee_element) {
 
 async function getFollowerCount() {
     console.log(window.location.href)
+    const url = "https://example.com/user/profile/username";
+    const parts = url.split("/")
+    const username = parts[parts.length - 1]
+    console.log(username)
+
     // const response = await fetch("/followers"); // Replace with the endpoint that returns the follower count
     // const data = await response.json();
     // return data.count; // Assuming the response contains the count value
