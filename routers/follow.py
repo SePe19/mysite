@@ -1,4 +1,4 @@
-from bottle import get, post, request
+from bottle import get, post, request, response
 from dotenv import load_dotenv
 import dbconnection
 
@@ -31,7 +31,7 @@ def follow():
         if "db" in locals(): db.close()
 
 @post("/unfollow")
-def follow():
+def unfollow():
     try:
         db = dbconnection.db()
         user_cookie = dbconnection.user()
@@ -63,28 +63,42 @@ def follow():
 def _(username):
     try:
         db = dbconnection.db()
-        followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username)).fetchone()
+        followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username,)).fetchone()
+        if followers is not None:
+            follower_count = followers["user_total_followers"]
+        else:
+            follower_count = 0
         followers_dict = {
-            "followers": followers
+            "followers": follower_count
         }
+        response.content_type = "application/json"
         return followers_dict
     except Exception as ex:
         print(ex)
-        if "db" in locals(): db.rollback()
+        if "db" in locals():
+            db.rollback()
     finally:
-        if "db" in locals(): db.close()
+        if "db" in locals():
+            db.close()
 
 @get("/<username>/following")
 def _(username):
     try:
         db = dbconnection.db()
-        following = db.execute("SELECT user_total_following FROM users WHERE username = ?", (username)).fetchone()
-        following_dict = {
-            "following": following
+        followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username,)).fetchone()
+        if followers is not None:
+            follower_count = followers["user_total_followers"]
+        else:
+            follower_count = 0
+        followers_dict = {
+            "followers": follower_count
         }
-        return following_dict
+        response.content_type = "application/json"
+        return followers_dict
     except Exception as ex:
         print(ex)
-        if "db" in locals(): db.rollback()
+        if "db" in locals():
+            db.rollback()
     finally:
-        if "db" in locals(): db.close()
+        if "db" in locals():
+            db.close()
