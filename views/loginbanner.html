@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="bg-twitter-blue w-full fixed bottom-0 left-0 z-20 p-3">
+        <!-- web start -->
+        <div class="max-w-2xl mx-auto hidden md:block">
+            <div class="flex justify-between">
+            <!-- text start -->
+            <div class="flex flex-col text-white">
+                <span class="text-20 font-bold" >Don’t miss what’s happening</span>
+                <span>People on Twitter are the first to know.</span>
+            </div>
+            <!-- text end -->
+
+            <!-- buttons start -->
+            <div class="flex items-center gap-3">
+                <button id="#bottom-login" onclick="loginModal()" type="button" class="flex-shrink-0 inline-flex justify-center items-center border border-white border-opacity-40 px-4 py-1.5 ml-auto rounded-full font-semibold text-white text-sm">
+                    <span class="">Log in</span>
+                </button>
+                <button id="#bottom-signup" onclick="signupModal()" type="button" class="flex-shrink-0 inline-flex px-4 py-1.5 ml-auto bg-white rounded-full font-semibold text-twitter-dark-grey text-sm">
+                    <span class="">Sign up</span>
+                </button>
+            </div>
+            <!-- buttons end -->
+
+            </div>
+        </div>
+        <!-- web end -->
+
+        <!-- mobile start -->
+        <div class="sm:flex flex md:hidden justify-between gap-3">
+            <button id="#bottom-login" onclick="loginModal()" type="button" class="w-full inline-flex justify-center items-center border border-white border-opacity-40 px-4 py-1.5 ml-auto rounded-full font-semibold text-white text-sm">
+                <span class="">Log in</span>
+            </button>
+            
+            <button id="#bottom-signup" onclick="signupModal()" type="button" class="w-full inline-flex justify-center items-center bg-white px-4 py-1.5 ml-auto rounded-full font-semibold text-black text-sm">
+                <span class="">Sign up</span>
+            </button>
+        </div>
+        <!-- mobile end -->
+    </div>
+
+</body>
+
+</html>

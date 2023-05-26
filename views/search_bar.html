@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    function show_search_results(){
+        document.querySelector("#search_results").classList.remove("hidden")
+    }
+    function hide_search_results(){
+        document.querySelector("#search_results").classList.add("hidden")
+    }
+
+    let the_timer
+    function search(){
+        // kills the clock
+        clearTimeout(the_timer)
+        // starts the clock
+        the_timer = setTimeout( async function(){
+            const conn = await fetch("/search", {
+                method : "POST"
+            })
+            const data = await conn.json()
+            let results = ""
+            document.querySelector("#search_results").innerHTML = ""
+            data.forEach( ( item )=>{			
+                results += `<div>${item.name}</div>`
+            } )
+            console.log(results)
+            document.querySelector("#search_results").insertAdjacentHTML('afterbegin', results)
+        }, 500 );
+    }
+</script>
+
+<body>
+    <!-- search start -->
+    <div class="relative w-full block group">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-twitter-grey group-focus:text-twitter-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 10.25 3.75 c -3.59 0 -6.5 2.91 -6.5 6.5 s 2.91 6.5 6.5 6.5 c 1.795 0 3.419 -0.726 4.596 -1.904 c 1.178 -1.177 1.904 -2.801 1.904 -4.596 c 0 -3.59 -2.91 -6.5 -6.5 -6.5 Z m -8.5 6.5 c 0 -4.694 3.806 -8.5 8.5 -8.5 s 8.5 3.806 8.5 8.5 c 0 1.986 -0.682 3.815 -1.824 5.262 l 4.781 4.781 l -1.414 1.414 l -4.781 -4.781 c -1.447 1.142 -3.276 1.824 -5.262 1.824 c -4.694 0 -8.5 -3.806 -8.5 -8.5 Z"/></svg>
+        </span>
+        <input oninput="search()" onblur="hide_search_results()" onfocus="show_search_results()" value="" type="text" placeholder="Search Twitter" class="w-full rounded-full text-twitter-light-grey placeholder-twitter-grey outline-none group bg-twitter-search-bg px-6 py-2.5 pl-10 pr-4 border border-transparent focus:border-twitter-blue focus:bg-transparent">
+
+        <div id="search_results" class="hidden absolute py-2 px-4 text-twitter-light-grey bg-black w-full rounded-lg border border-twitter-line h-44 z-50">
+            <div class="flex justify-between items-center">
+                <p class="text-20 font-bold text-twitter-light-grey">Recent</p>
+                <p class="text-14 font-bold text-twitter-blue hover:cursor-pointer">Clear all</p>
+            </div>
+        </div>
+    </div>
+    <!-- search end -->
+</body>
+</html>

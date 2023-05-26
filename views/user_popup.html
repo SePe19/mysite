@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="popup" class="hidden bg-black rounded-xl shadow-white border border-twitter-line w-full z-50 py-4">
+        <button class="text-twitter-light-grey font-bold text-15 w-full text-left hover:bg-twitter-dark-hover px-4 py-2.5 transition duration-200 ease-in-out">Add an existing account</button>
+        <button type="button" onclick="openLogout()" class="text-twitter-light-grey font-bold text-15 w-full text-left hover:bg-twitter-dark-hover px-4 py-2.5 transition duration-200 ease-in-out">Log out</button>
+    </div>
+
+
+    <script>
+        const logout = document.getElementById("logout")
+
+        function openLogout() {
+            const overlay = document.getElementById("overlay")
+            logout.classList.remove("hidden")
+            overlay.classList.remove("hidden")
+            document.body.style.overflow = "hidden";
+            popup.classList.add("hidden")
+        }
+
+    </script>
+</body>
+</html>

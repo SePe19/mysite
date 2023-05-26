@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- trends for you start -->
+    <div class="bg-twitter-right-box-bg w-full mt-4 rounded-xl">
+        <h2 id="" class="text-20 font-bold text-twitter-light-grey px-4 py-2">Trends for you</h2>
+
+        <!-- trend start -->
+        % for trend in trends:
+        <div class="flex w-full items-start justify-between hover:backdrop-brightness-125 hover:cursor-pointer px-4 py-2 transition duration-200 ease-in-out">
+                <div class="grid gap-y-0.5">
+                    <div id="sm_dark_txt" class="text-13 text-twitter-grey">{{trend["trend_category"]}}</div>
+                    <div id="sm_light_bold_txt" class="text-15 font-bold text-twitter-light-grey">{{trend["trend_title"]}}</div>
+                    <div class="inline-flex">
+                        <div id="sm_dark_txt" class="tweet-number text-13 text-twitter-grey">{{trend["trend_total_tweets"]}}</div>
+                        <div id="sm_dark_txt" class="tweet-number text-13 text-twitter-grey">&nbsp;Tweets</div>
+                    </div>
+                </div>
+                <!-- more start -->
+                <div class="hover:bg-twitter-blue text-twitter-grey hover:text-twitter-blue hover:bg-opacity-10 rounded-full hover:cursor-pointer p-2 transition duration-200 ease-in-out">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="currentColor" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 3 12 c 0 -1.1 0.9 -2 2 -2 s 2 0.9 2 2 s -0.9 2 -2 2 s -2 -0.9 -2 -2 Z m 9 2 c 1.1 0 2 -0.9 2 -2 s -0.9 -2 -2 -2 s -2 0.9 -2 2 s 0.9 2 2 2 Z m 7 0 c 1.1 0 2 -0.9 2 -2 s -0.9 -2 -2 -2 s -2 0.9 -2 2 s 0.9 2 2 2 Z"/></svg>
+                </div>
+                <!-- more end -->
+        </div>
+        % end
+        <!-- trend end -->
+
+        <p class="text-twitter-blue hover:backdrop-brightness-125 text-15 p-4 hover:cursor-pointer transition duration-200 ease-in-out">Show more</p>
+    </div>
+    <!-- trends for you end -->
+</body>
+</html>

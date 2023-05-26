@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- right start -->
+    <div class="col-span-1 hidden lg:block pl-7 pt-1">
+        <div class="w-350 sticky top-1">
+            <!-- search start -->
+            % include("search_bar")
+            <!-- search end -->
+
+            <!-- tweet images start -->
+            <div class="mt-4">
+                <div class="grid grid-cols-3 gap-0.5 border border-twitter-line rounded-xl overflow-hidden">
+                    % for profile_tweets_image in profile_tweets_images:
+                        % if profile_tweets_image:
+                            <img src="images/tweet_images/{{profile_tweets_image['tweet_image']}}" alt="" class="h-24 w-full object-cover hover:cursor-pointer">
+                        % end
+                    % end
+                </div>
+            </div>
+            <!-- tweet images end -->
+
+            <!-- you might like start -->
+            <div class="bg-twitter-right-box-bg w-full mt-4 rounded-xl">
+                <h2 id="" class="text-20 font-bold text-twitter-light-grey px-4 py-2">You might like</h2>
+                    <!-- user start -->
+                    % for user in users:
+                    <div class="flex w-full items-center justify-between hover:backdrop-brightness-125 hover:cursor-pointer px-4 py-2.5 transition duration-200 ease-in-out">
+                        <div class="inline-flex gap-3 items-center">
+                            <a class="inline-flex gap-3 items-center" href="/{{user['user_name']}}">
+                            <img src="images/avatars/{{user['user_avatar']}}" alt="" class="w-10 h-10 rounded-full"> 
+                            <div class="flex-col">
+                                <div class="flex items-center gap-1">
+                                    <p id="m_light_bold_txt" class="text-15 font-bold text-twitter-light-grey hover:underline transition duration-200 ease-in-out">{{user["user_first_name"]}}&nbsp{{user["user_last_name"]}}</p>    
+                                    % if user["user_verified"] == 1:
+                                    <div class="text-twitter-blue">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 20.396 11 c -0.018 -0.646 -0.215 -1.275 -0.57 -1.816 c -0.354 -0.54 -0.852 -0.972 -1.438 -1.246 c 0.223 -0.607 0.27 -1.264 0.14 -1.897 c -0.131 -0.634 -0.437 -1.218 -0.882 -1.687 c -0.47 -0.445 -1.053 -0.75 -1.687 -0.882 c -0.633 -0.13 -1.29 -0.083 -1.897 0.14 c -0.273 -0.587 -0.704 -1.086 -1.245 -1.44 S 11.647 1.62 11 1.604 c -0.646 0.017 -1.273 0.213 -1.813 0.568 s -0.969 0.854 -1.24 1.44 c -0.608 -0.223 -1.267 -0.272 -1.902 -0.14 c -0.635 0.13 -1.22 0.436 -1.69 0.882 c -0.445 0.47 -0.749 1.055 -0.878 1.688 c -0.13 0.633 -0.08 1.29 0.144 1.896 c -0.587 0.274 -1.087 0.705 -1.443 1.245 c -0.356 0.54 -0.555 1.17 -0.574 1.817 c 0.02 0.647 0.218 1.276 0.574 1.817 c 0.356 0.54 0.856 0.972 1.443 1.245 c -0.224 0.606 -0.274 1.263 -0.144 1.896 c 0.13 0.634 0.433 1.218 0.877 1.688 c 0.47 0.443 1.054 0.747 1.687 0.878 c 0.633 0.132 1.29 0.084 1.897 -0.136 c 0.274 0.586 0.705 1.084 1.246 1.439 c 0.54 0.354 1.17 0.551 1.816 0.569 c 0.647 -0.016 1.276 -0.213 1.817 -0.567 s 0.972 -0.854 1.245 -1.44 c 0.604 0.239 1.266 0.296 1.903 0.164 c 0.636 -0.132 1.22 -0.447 1.68 -0.907 c 0.46 -0.46 0.776 -1.044 0.908 -1.681 s 0.075 -1.299 -0.165 -1.903 c 0.586 -0.274 1.084 -0.705 1.439 -1.246 c 0.354 -0.54 0.551 -1.17 0.569 -1.816 Z M 9.662 14.85 l -3.429 -3.428 l 1.293 -1.302 l 2.072 2.072 l 4.4 -4.794 l 1.347 1.246 Z"/></svg>
+                                    </div>
+                                    % end
+                                </div>
+                                <p id="dark_txt" class="text-15 text-twitter-grey">@{{user["user_name"]}}</p>
+                            </div>
+                            </a>  
+                        </div>
+                        % if not get('user_cookie'):
+                        <button onclick="loginModal()" class="px-4 py-1 ml-auto bg-twitter-light-grey rounded-full font-semibold text-twitter-dark-grey text-sm">Follow</button>
+                        % elif any(follow['followee_id'] == user['user_id'] for follow in following):
+                        <button onclick="unfollow(this)" value="{{user['user_id']}}" class="follow px-4 py-1 ml-auto bg-twitter-light-grey rounded-full font-semibold text-twitter-dark-grey text-sm">Following</button>
+                        % else:
+                        <button onclick="follow(this)" value="{{user['user_id']}}" class="follow px-4 py-1 ml-auto bg-twitter-light-grey rounded-full font-semibold text-twitter-dark-grey text-sm">Follow</button>
+                        % end                 
+                    </div>
+                    % end
+                    <!-- user end -->
+
+                <p class="text-twitter-blue hover:backdrop-brightness-125 text-15 p-4 hover:cursor-pointer transition duration-200 ease-in-out">Show more</p>
+            </div>
+            <!-- you might like end -->
+
+            % include("trends")
+
+            <!-- policies start -->
+            <div class="grid p-4 text-13 text-twitter-grey overscroll-none">
+                <div class="row-span-1 flex gap-2">
+                    <p class="hover:underline hover:cursor-pointer transition duration-200 ease-in-out">Terms of Service</p>
+                    <p class="hover:underline hover:cursor-pointer transition duration-200 ease-in-out">Privacy Policy</p>
+                    <p class="hover:underline hover:cursor-pointer transition duration-200 ease-in-out">Cookie Policy</p>
+                </div>
+                <div class="row-span-1 flex gap-2">
+                    <p class="hover:underline hover:cursor-pointer transition duration-200 ease-in-out">Accessibility</p>
+                    <p class="hover:underline hover:cursor-pointer transition duration-200 ease-in-out">Ads info</p>
+                    <div class="flex items-center gap-1">
+                        <p class="hover:underline hover:cursor-pointer transition duration-200 ease-in-out">More</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-twitter-grey">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        </svg> 
+                    </div>
+                </div>
+                <div class="row-span-1 flex gap-2">
+                    <p>@ 2023 Twitter, Inc</p>
+                </div>
+            </div>
+            <!-- policies end -->
+        </div>
+    </div>
+    <!-- right -->
+</body>
+</html>

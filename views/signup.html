@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    <section id="modal-signup" class="hidden bg-black rounded-2xl p-4 pb-10 mx-auto w-420 lg:w-600 fixed inset-0 z-100 max-h-fit my-auto">
+        <button id="closeModal" class="text-white" onclick="closeSignupModal()" class="w-fit hover:bg-white text-twitter-grey hover:bg-opacity-10 rounded-full hover:cursor-pointer p-2 transition duration-200 ease-in-out">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 18l-6-6m0 0L6 6m6 6l6-6m-6 6l-6 6"/></svg>
+        </button>
+
+        <div class="flex flex-col items-center p-6">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 23.643 4.937 c -0.835 0.37 -1.732 0.62 -2.675 0.733 c 0.962 -0.576 1.7 -1.49 2.048 -2.578 c -0.9 0.534 -1.897 0.922 -2.958 1.13 c -0.85 -0.904 -2.06 -1.47 -3.4 -1.47 c -2.572 0 -4.658 2.086 -4.658 4.66 c 0 0.364 0.042 0.718 0.12 1.06 c -3.873 -0.195 -7.304 -2.05 -9.602 -4.868 c -0.4 0.69 -0.63 1.49 -0.63 2.342 c 0 1.616 0.823 3.043 2.072 3.878 c -0.764 -0.025 -1.482 -0.234 -2.11 -0.583 v 0.06 c 0 2.257 1.605 4.14 3.737 4.568 c -0.392 0.106 -0.803 0.162 -1.227 0.162 c -0.3 0 -0.593 -0.028 -0.877 -0.082 c 0.593 1.85 2.313 3.198 4.352 3.234 c -1.595 1.25 -3.604 1.995 -5.786 1.995 c -0.376 0 -0.747 -0.022 -1.112 -0.065 c 2.062 1.323 4.51 2.093 7.14 2.093 c 8.57 0 13.255 -7.098 13.255 -13.254 c 0 -0.2 -0.005 -0.402 -0.014 -0.602 c 0.91 -0.658 1.7 -1.477 2.323 -2.41 Z"/></svg>
+            </span>
+
+            <span class="text-white text-23 font-bold mt-4">Join Twitter today</span>
+
+            <!-- inputs start -->
+            <div class="mt-4 flex flex-col justify-center">
+                <input type="text" name="first_name" id="first_name" placeholder="First name" class="rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-3 p-2 mt-2.5 w-80">
+                <input type="text" name="last_name" id="last_name" placeholder="Last name"class="rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-3 p-2 mt-2.5 w-80">
+                <input type="text" name="username" id="username" placeholder="Username" class="rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-3 p-2 mt-2.5 w-80">
+                <input type="email" name="email" id="email" placeholder="Email" class="rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-3 p-2 mt-2.5 w-80">
+                <input type="password" name="password" id="password" placeholder="Password" class="rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-3 p-2 mt-2.5 w-80">
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password" class="rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-3 p-2 mt-2.5 w-80">
+            </div>
+            <!-- inputs end -->
+
+            <button onclick="signUp()" class="bg-twitter-blue text-white rounded-3xl px-6 py-2 font-semibold w-80 mt-4 hover:bg-opacity-90">Create account</button>
+            
+            <!-- policies start -->
+            <div class="w-80">
+                <div class="text-twitter-light-grey flex w-fit text-13 mt-4 mb-4 gap-1">
+                    <p>By signing up, you agree to the <a class="text-twitter-blue hover:underline" href="">Terms of Service</a> and <a class="text-twitter-blue hover:underline" href="">Privacy Policy</a>, including <a class="text-twitter-blue hover:underline" href="">Cookie Use.</a></p>
+                </div>
+            </div>
+            <!-- policies end -->
+
+            <div class="flex gap-1 text-15">
+                <p class="text-twitter-grey">Already have an account?</p>
+                <a id="#bottom-login onclick="loginModal()" class="text-twitter-blue hover:underline" href="">Log in</a>
+            </div>
+        </div>
+    </section>
+
+<script>
+    const modalSignup = document.getElementById("modal-signup")
+    const overlay = document.getElementById("overlay")
+
+    function signupModal() {
+        modalSignup.classList.remove("hidden")
+        overlay.classList.remove("hidden")
+        document.body.style.overflow = "hidden";
+    
+    }
+
+    function closeSignupModal() {
+        modalSignup.classList.add("hidden")
+        overlay.classList.add("hidden")
+        document.body.style.overflow = "scroll";
+    }
+
+    async function signUp() {
+        const username = document.querySelector("input[name='username']").value
+        const first_name = document.querySelector("input[name='first_name']").value
+        const last_name = document.querySelector("input[name='last_name']").value
+        const email = document.querySelector("input[name='email']").value
+        const password = document.querySelector("input[name='password']").value
+        const confirm_password = document.querySelector("input[name='confirm_password']").value
+        console.log("this is the username", username)
+
+        const formData = new FormData();
+
+        formData.append('first_name', first_name);
+        formData.append('last_name', last_name);
+        formData.append('username', username);
+        formData.append('email', email);
+        formData.append('password', password);
+        formData.append('confirm_password', confirm_password);
+        
+        for (const value of formData.values()) {
+            console.log(value);
+        }
+
+        const response = await fetch("/signup", {
+            method: "POST", 
+            body: formData
+        })
+        const data = await response.json()
+        console.log("This is the right username", username)
+        console.log("This is the data", data)
+    }
+</script>
+
+</body>
+</html>
