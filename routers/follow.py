@@ -1,4 +1,4 @@
-from bottle import post, request
+from bottle import get, post, request
 from dotenv import load_dotenv
 import dbconnection
 
@@ -55,5 +55,18 @@ def follow():
     except Exception as ex:
         print("unfollow", ex)
         return ex
+    finally:
+        if "db" in locals(): db.close()
+
+
+@get("/<username>/followers")
+def _(username):
+    try:
+        db = dbconnection.db()
+        followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username)).fetchone()
+        return followers
+    except Exception as ex:
+        print(ex)
+        if "db" in locals(): db.rollback()
     finally:
         if "db" in locals(): db.close()

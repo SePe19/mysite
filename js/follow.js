@@ -16,6 +16,9 @@ async function follow(followee_element) {
             };
         }
     }
+    const followerCountElement = document.getElementById("followerCount");
+    const followerCount = await getFollowerCount(); // Fetch updated follower count
+    // followerCountElement.textContent = followerCount;
 }
 
 async function unfollow(followee_element) {
@@ -36,4 +39,11 @@ async function unfollow(followee_element) {
             };
         }
     }
+}
+
+async function getFollowerCount() {
+    console.log(window.location.href)
+    // const response = await fetch("/followers"); // Replace with the endpoint that returns the follower count
+    // const data = await response.json();
+    // return data.count; // Assuming the response contains the count value
 }
