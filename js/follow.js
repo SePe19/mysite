@@ -43,7 +43,7 @@ async function unfollow(followee_element) {
 
 async function getFollowerCount() {
     console.log(window.location.href)
-    const url = "https://example.com/user/profile/username";
+    const url = window.location.href
     const parts = url.split("/")
     const username = parts[parts.length - 1]
     console.log(username)
