@@ -55,23 +55,21 @@ async function unfollow(followee_element) {
 
 async function getFollowerCount() {
     try {
-        const url = window.location.href;
-        const parts = url.split("/");
-        const username = parts[parts.length - 1];
+        const url = window.location.href
+        const parts = url.split("/")
+        const username = parts[parts.length - 1]
 
-        const response = await fetch(`/${username}/followers`);
-        const clonedResponse = response.clone(); // Clone the response
+        const response = await fetch(`/${username}/followers`)
+        const data = await response.json()
 
-        const data = await clonedResponse.json(); // Parse the cloned response
-
-        if (clonedResponse.ok) {
-        return data.followers;
+        if (response.ok) {
+            return data.followers
         } else {
-        throw new Error("Error fetching follower count: Invalid response");
+            throw new Error("Error fetching follower count: Invalid response")
         }
     } catch (error) {
-        console.error("Error fetching follower count:", error);
-        return 0;
+        console.error("Error fetching follower count:", error)
+        return 0
     }
 }
 

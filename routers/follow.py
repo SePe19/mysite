@@ -66,6 +66,7 @@ def _(username):
         followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username,)).fetchone()
         if followers is not None:
             follower_count = followers["user_total_followers"]
+            print(follower_count)
         else:
             follower_count = 0
         followers_dict = {
@@ -85,16 +86,17 @@ def _(username):
 def _(username):
     try:
         db = dbconnection.db()
-        followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username,)).fetchone()
-        if followers is not None:
-            follower_count = followers["user_total_followers"]
+        following = db.execute("SELECT user_total_following FROM users WHERE username = ?", (username,)).fetchone()
+        if following is not None:
+            following_count = following["user_total_following"]
+            print(following_count)
         else:
-            follower_count = 0
-        followers_dict = {
-            "followers": follower_count
+            following_count = 0
+        following_dict = {
+            "following": following_count
         }
         response.content_type = "application/json"
-        return followers_dict
+        return following_dict
     except Exception as ex:
         print(ex)
         if "db" in locals():
