@@ -18,7 +18,7 @@ async function follow(followee_element) {
     }
     const followerCountElement = document.getElementById("followerCount");
     const followerCount = await getFollowerCount(); // Fetch updated follower count
-    // followerCountElement.textContent = followerCount;
+    followerCountElement.textContent = followerCount;
 }
 
 async function unfollow(followee_element) {
@@ -39,6 +39,14 @@ async function unfollow(followee_element) {
             };
         }
     }
+
+    const followerCountElement = document.getElementById("followerCount");
+    const followerCount = await getFollowerCount(followee_id); // Fetch updated follower count for the specified user
+    followerCountElement.textContent = followerCount;
+
+    const followingCountElement = document.getElementById("followingCount");
+    const followingCount = await getFollowingCount(followee_id); // Fetch updated following count for the specified user
+    followingCountElement.textContent = followingCount;
 }
 
 async function getFollowerCount() {
@@ -47,16 +55,36 @@ async function getFollowerCount() {
         const parts = url.split("/")
         const username = parts[parts.length - 1]
 
-        const response = await fetch(`/${username}/followers`); // Replace with the endpoint that returns the follower count
+        const response = await fetch(`/${username}/followers`)
         const data = await response.json();
 
         if (response.ok) {
-            return data.count; // Assuming the response contains the count value
+            return data.followers
         } else {
             throw new Error("Error fetching follower count: Invalid response");
         }
     } catch (error) {
         console.error("Error fetching follower count:", error);
-        return 0; // Return a default value or handle the error as needed
+        return 0
+    }
+}
+
+async function getFollowingCount() {
+    try {
+        const url = window.location.href
+        const parts = url.split("/")
+        const username = parts[parts.length - 1]
+
+        const response = await fetch(`/${username}/following`)
+        const data = await response.json();
+
+        if (response.ok) {
+            return data.followers
+        } else {
+            throw new Error("Error fetching following count: Invalid response");
+        }
+    } catch (error) {
+        console.error("Error fetching following count:", error);
+        return 0
     }
 }

@@ -65,9 +65,24 @@ def _(username):
         db = dbconnection.db()
         followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username)).fetchone()
         followers_dict = {
-            "follower_count": followers
+            "followers": followers
         }
         return followers_dict
+    except Exception as ex:
+        print(ex)
+        if "db" in locals(): db.rollback()
+    finally:
+        if "db" in locals(): db.close()
+
+@get("/<username>/following")
+def _(username):
+    try:
+        db = dbconnection.db()
+        following = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username)).fetchone()
+        following_dict = {
+            "following": following
+        }
+        return following_dict
     except Exception as ex:
         print(ex)
         if "db" in locals(): db.rollback()
