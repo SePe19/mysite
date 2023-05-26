@@ -5,6 +5,10 @@ import git
 # import dbconnection
 # import os
 
+# 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
+
+# https://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@github.com/SePe19/mysite.git
+
 @post("/f10b10c9cc6e4a13ae09a13d1181a6b1")
 def git_update():
     repo = git.Repo("./mysite")
@@ -16,7 +20,7 @@ def git_update():
 
 @get("/")
 def _():
-    return "One"
+    return "REEEEEEE"
 # ##############################
 # @get("/images/<filename:re:.*\.webp>")
 # def _(filename):
