@@ -63,7 +63,7 @@ def unfollow():
 def _(username):
     try:
         db = dbconnection.db()
-        followers = db.execute("SELECT user_total_followers FROM users WHERE username = ?", (username,)).fetchone()
+        followers = db.execute("SELECT user_total_followers FROM users WHERE user_name = ?", (username,)).fetchone()
         if followers is not None:
             follower_count = followers["user_total_followers"]
             print(follower_count)
@@ -86,7 +86,7 @@ def _(username):
 def _(username):
     try:
         db = dbconnection.db()
-        following = db.execute("SELECT user_total_following FROM users WHERE username = ?", (username,)).fetchone()
+        following = db.execute("SELECT user_total_following FROM users WHERE user_name = ?", (username,)).fetchone()
         if following is not None:
             following_count = following["user_total_following"]
             print(following_count)
