@@ -75,22 +75,22 @@ async function getFollowerCount() {
 
 async function getFollowingCount() {
     try {
-        const url = window.location.href
-        const parts = url.split("/")
-        const username = parts[parts.length - 1]
+        const url = window.location.href;
+        const parts = url.split("/");
+        const username = parts[parts.length - 1];
 
-        const response = await fetch(`/${username}/following`)
-        console.log(response.json())
-        const data = await response.json()
-        console.log(data)
+        const response = await fetch(`/${username}/following`);
+        const clonedResponse = response.clone();
 
-        if (response.ok) {
-            return data.following
+        const data = await clonedResponse.json();
+
+        if (clonedResponse.ok) {
+        return data.following;
         } else {
-            throw new Error("Error fetching following count: Invalid response")
+        throw new Error("Error fetching following count: Invalid response");
         }
     } catch (error) {
-        console.error("Error fetching following count:", error)
-        return 0
+        console.error("Error fetching following count:", error);
+        return 0;
     }
 }
