@@ -104,8 +104,9 @@ def email_verification(user_email, token):
         message["To"] = receiver_email
         try:
             import production
-            url = os.getenv("PYTHONANYWHERE_URL")
-        except ImportError:
+            url = os.getenv("PYTHONANYWHERE_URL") + "/verify-user"
+            print(url)
+        except:
             url = "http://127.0.0.1:3000/verify-user"
         
         text = """\
