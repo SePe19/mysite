@@ -7,18 +7,22 @@ async function follow(followee_element) {
         body: formData
     })
     const data = await response.json()
-    const followButtons = document.getElementsByClassName("follow");
+    const followButtons = document.getElementsByClassName("follow")
     for (let i = 0; i < followButtons.length; i++) {
         if (followButtons[i].value == followee_id) {
-            followButtons[i].textContent = "Following";
+            followButtons[i].textContent = "Following"
             followButtons[i].onclick = function() {
-                unfollow(this);
-            };
+                unfollow(this)
+            }
         }
     }
-    const followerCountElement = document.getElementById("followerCount");
-    const followerCount = await getFollowerCount(); // Fetch updated follower count
-    followerCountElement.textContent = followerCount;
+    const followerCountElement = document.getElementById("followerCount")
+    const followerCount = await getFollowerCount()
+    followerCountElement.textContent = followerCount
+    
+    const followingCountElement = document.getElementById("followingCount")
+    const followingCount = await getFollowingCount()
+    followingCountElement.textContent = followingCount
 }
 
 async function unfollow(followee_element) {
@@ -30,23 +34,23 @@ async function unfollow(followee_element) {
         body: formData
     })
     const data = await response.json()
-    const followButtons = document.getElementsByClassName("follow");
+    const followButtons = document.getElementsByClassName("follow")
     for (let i = 0; i < followButtons.length; i++) {
         if (followButtons[i].value == followee_id) {
-            followButtons[i].textContent = "Follow";
+            followButtons[i].textContent = "Follow"
             followButtons[i].onclick = function() {
-                follow(this);
-            };
+                follow(this)
+            }
         }
     }
 
-    const followerCountElement = document.getElementById("followerCount");
-    const followerCount = await getFollowerCount(followee_id); // Fetch updated follower count for the specified user
-    followerCountElement.textContent = followerCount;
+    const followerCountElement = document.getElementById("followerCount")
+    const followerCount = await getFollowerCount() // Fetch updated follower count for the specified user
+    followerCountElement.textContent = followerCount
 
-    const followingCountElement = document.getElementById("followingCount");
-    const followingCount = await getFollowingCount(followee_id); // Fetch updated following count for the specified user
-    followingCountElement.textContent = followingCount;
+    const followingCountElement = document.getElementById("followingCount")
+    const followingCount = await getFollowingCount() // Fetch updated following count for the specified user
+    followingCountElement.textContent = followingCount
 }
 
 async function getFollowerCount() {
@@ -56,16 +60,16 @@ async function getFollowerCount() {
         const username = parts[parts.length - 1]
 
         const response = await fetch(`/${username}/followers`)
-        const data = await response.json();
+        const data = await response.json()
         console.log(data)
 
         if (response.ok) {
             return data.followers
         } else {
-            throw new Error("Error fetching follower count: Invalid response");
+            throw new Error("Error fetching follower count: Invalid response")
         }
     } catch (error) {
-        console.error("Error fetching follower count:", error);
+        console.error("Error fetching follower count:", error)
         return 0
     }
 }
@@ -77,16 +81,16 @@ async function getFollowingCount() {
         const username = parts[parts.length - 1]
 
         const response = await fetch(`/${username}/following`)
-        const data = await response.json();
+        const data = await response.json()
         console.log(data)
 
         if (response.ok) {
             return data.followers
         } else {
-            throw new Error("Error fetching following count: Invalid response");
+            throw new Error("Error fetching following count: Invalid response")
         }
     } catch (error) {
-        console.error("Error fetching following count:", error);
+        console.error("Error fetching following count:", error)
         return 0
     }
 }
