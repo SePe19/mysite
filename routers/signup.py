@@ -105,7 +105,6 @@ def email_verification(user_email, token):
         try:
             import production
             url = os.getenv("PYTHONANYWHERE_URL") + "/verify-user"
-            print("ATTENTION URL:",url)
         except:
             url = "http://127.0.0.1:3000/verify-user"
         
