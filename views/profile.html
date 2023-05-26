@@ -312,8 +312,11 @@
         window.location.href= "/" + username
     }
 
-    const follows = document.querySelectorAll(".follows")
-    console.log(follows)
+    const follows = document.getElementsByClassName("follows")
+    for (let i = 0; i < follows.length; i++) {
+        console.log(follows[i].value)
+    }
+
 
     function follow() {
         const followee_id = document.getElementById("followButton").value
