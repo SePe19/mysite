@@ -102,6 +102,7 @@
                                 </div>
                                 % end
                             </div> 
+                            <div class="hidden" id="usernameCookie" value="{{user_cookie["user_name"]}}"></div>                     
                             <p class="text-15 text-twitter-grey">@{{user["user_name"]}}</p>                      
                         </div>
 
@@ -307,6 +308,7 @@
         const data = await response.json()
 
         closeUpdateModal()
+        if (!username) username = document.getElementById("usernameCookie").value
         window.location.href= "/" + username
     }
 
