@@ -57,6 +57,7 @@ def update():
     new_avatar = dbconnection.avatar_picture()
     print("NEW AVATAR POGGERS", new_avatar)
     if avatar != new_username and new_avatar != "" and new_avatar is not None:
+      print("MMMMMMM")
       db.execute(f"UPDATE users SET user_avatar = ? WHERE user_name = ?", (new_avatar, username))
 
     # cover = user_cookie["user_cover"]
