@@ -58,7 +58,7 @@ def update():
 
     username = user_cookie["user_name"]
     new_username = request.forms.get("username", "")
-    if username != new_username:
+    if username != new_username and new_username != "" and new_username is not None:
       db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
     
     avatar = user_cookie["user_avatar"]
@@ -84,4 +84,21 @@ def update():
   
   finally:
     print("Database closed in @put profile.py")
+    if "db" in locals(): db.close()
+
+@put("/saving-bacon")
+def _():
+  try:
+    db = dbconnection.db()
+    # username = ""
+    # new_username = "baconbacon1"
+    users = db.execute("SELECT * FROM users").fetchall()
+    # db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
+    db.commit()
+    print(users)
+    return "okeydokey"
+  except Exception as ex:
+    if "db" in locals(): db.rollback()
+    print("bacon", ex)
+  finally:
     if "db" in locals(): db.close()
