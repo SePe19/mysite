@@ -54,22 +54,29 @@ def _(username):
 def update():
   try:
     db = dbconnection.db()
-    
     user_cookie = dbconnection.user()
+
     username = user_cookie["user_name"]
-    print("Current username", username)
-
     new_username = request.forms.get("username", "")
-    print("New username?", new_username)
+    if username != new_username:
+      db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
+    
+    avatar = user_cookie["user_avatar"]
+    new_avatar = dbconnection.avatar_picture()
+    if avatar != new_avatar:
+      db.execute(f"UPDATE users SET user_avatar = ? WHERE user_name = ?", (new_avatar, username))
 
-    db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
+    # cover = user_cookie["user_cover"]
+    # new_cover = request.forms.get("cover", "")
+    # if cover != new_cover
+    #   db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_cover, username))
+    
     db.commit()
 
-    # Modify the username attribute in cookie
     user_cookie['user_name'] = new_username
-    print("new username cookie value", user_cookie['user_name'])
+    user_cookie['user_avatar'] = new_avatar
     response.set_cookie("user", user_cookie, secret=os.getenv('MY_SECRET'), httponly=True)
-    return {"info": "Update succesful", "New username": user_cookie["user_name"]}
+    return {"info": "Update succesful", "New username": user_cookie["user_name"], "New avatar": user_cookie["user_avatar"]}
 
   except Exception as ex:
     print("Put route error her", ex)

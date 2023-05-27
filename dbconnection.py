@@ -126,25 +126,41 @@ def validate_tweet():
   # if not re.match(TWEET_REGEX, message): raise Exception(400, error)
   return message
 
-def picture():
+def tweet_picture():
   error = "Picture file not valid"
   picture = request.files.get("picture", "")
   if picture is None or picture == "":
     return picture
   name, ext = os.path.splitext(picture.filename)
-  print("NAME? ", name)
-  print("FILENAME ", ext)
-
   if ext not in (".png", ".jpg", ".jpeg", ".webp", ".gif"):
     response.status = 400
     raise Exception(error)
   picture_name = str(uuid.uuid4().hex)
   picture_name = picture_name + ext
-  
   try:
     import production
     picture.save(f"/home/19/mysite/images/tweet_images/{picture_name}")
   except:
     picture.save(f"images/tweet_images/{picture_name}")
+  finally:
+    return picture_name
+
+
+def avatar_picture():
+  error = "Picture file not valid"
+  picture = request.files.get("avatar", "")
+  if picture is None or picture == "":
+    return picture
+  name, ext = os.path.splitext(picture.filename)
+  if ext not in (".png", ".jpg", ".jpeg", ".webp", ".gif"):
+    response.status = 400
+    raise Exception(error)
+  picture_name = str(uuid.uuid4().hex)
+  picture_name = picture_name + ext
+  try:
+    import production
+    picture.save(f"/home/19/mysite/images/avatars/{picture_name}")
+  except:
+    picture.save(f"images/avatars/{picture_name}")
   finally:
     return picture_name
