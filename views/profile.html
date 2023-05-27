@@ -295,7 +295,7 @@
     async function update(){
         const username = document.querySelector("input[name='username_update']").value
         const avatar = document.querySelector("input[name='avatar_update']").files[0]
-        console.log(avatar)
+        console.log(avatar.name)
         const formData = new FormData();
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
