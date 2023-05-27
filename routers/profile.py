@@ -3,23 +3,13 @@ from dotenv import load_dotenv
 import os
 import dbconnection
 
-# @get("/<id>")
-# def index(id):
-#   db = dbconnection.db()
-#   load_dotenv('.env')
-#   user = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
-#   user_id = user["id"]
-
-#   userProfile = db.execute("SELECT * FROM users WHERE id = ? LIMIT 1", (user_id,)).fetchone()
-#   print("Is it the right profile?", userProfile)
-#   return template("profile", userProfile=userProfile)
-
 @get("/<username>")
 def _(username):
   try:
     db = dbconnection.db()
     user_cookie = dbconnection.user()
     user = db.execute("SELECT * FROM users WHERE user_name = ?", (username,)).fetchone()
+    print("WWWWWWW",user)
     if not user:
       response.set_header("Location", "/")
       response.status = 302
