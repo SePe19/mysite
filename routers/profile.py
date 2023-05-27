@@ -13,6 +13,7 @@ def _(username):
       response.set_header("Location", "/")
       response.status = 302
       return response.body
+    print("WWWWWWW", user)
     print("WWWWWWW", user["user_avatar"])
     users = db.execute("SELECT * FROM users").fetchall()
     profile_tweets = db.execute("SELECT * from users_and_tweets WHERE user_name = ? ORDER BY tweet_created_at DESC", (username,)).fetchall()
