@@ -47,7 +47,7 @@ module.exports = {
         '990': '61.875',
       },
       maxHeight: {
-        '512': '128rem',
+        '96': '96rem',
       },
       margin: {
         '18': '4.5'
