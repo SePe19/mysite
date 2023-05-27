@@ -42,10 +42,11 @@ def index():
         trends = db.execute("SELECT * FROM trends").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
         print("QQQQQQQ",users)
+        user_cookie = dbconnection.user()
+        print("USER_COOKIE QQQQQQQ",user_cookie)
         for user in users:
             print(user["user_id"])
         users_and_tweets = db.execute("SELECT * FROM users_and_tweets ORDER BY tweet_created_at DESC").fetchall()
-        user_cookie = dbconnection.user()
         print(user_cookie)
         if user_cookie is None:
             return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets)
