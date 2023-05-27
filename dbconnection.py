@@ -69,6 +69,11 @@ def validate_username():
 	if not re.match(USERNAME_REGEX, username): raise Exception(400, error)
 	return username
 
+def update_username():
+	username = request.forms.get("username", "")
+	username = username.strip()
+	return username
+
 ##############################
 #Password Validation
 

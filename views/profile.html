@@ -296,8 +296,8 @@
         const username = document.querySelector("input[name='username_update']").value
         const avatar = document.querySelector("input[name='avatar_update']").files[0]
         const formData = new FormData();
-        formData.append('username', username);
-        formData.append('avatar', avatar);
+        if(username) formData.append('username', username);
+        if(avatar) formData.append('avatar', avatar);
 
         const response = await fetch("/update", {
             method: "PUT", 
