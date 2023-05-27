@@ -306,14 +306,12 @@
             body: formData
         })
         const data = await response.json()
+        console.log(data)
 
         closeUpdateModal()
         if (!username) username = document.getElementById("usernameCookie").value
         window.location.href= "/" + username
     }
-
-
-   
 </script>
 
 <script src="/js/time.js"></script>
