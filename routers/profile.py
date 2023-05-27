@@ -90,10 +90,10 @@ def update():
 def _():
   try:
     db = dbconnection.db()
-    # username = ""
-    # new_username = "baconbacon1"
+    email = "mrsepe19@gmail.com"
+    new_username = "baconbacon1"
+    db.execute(f"UPDATE users SET user_name = ? WHERE user_email = ?", (new_username, email))
     users = db.execute("SELECT * FROM users").fetchall()
-    # db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
     db.commit()
     print(users)
     return {"users":users}
