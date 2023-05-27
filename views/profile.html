@@ -306,10 +306,10 @@
         const data = await response.json()
 
         closeUpdateModal()
-        const user = document.cookie.get("user")
-        console.log(user)
         window.location.href= "/" + username
     }
+    const user = document.cookie.get("user")
+    console.log(user)
 
 
     function follow() {
