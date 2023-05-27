@@ -172,8 +172,8 @@
                             <p id="sm_light_txt" class="text-15 text-twitter-light-grey word-wrap">{{user_and_tweet["tweet_message"]}}</p>                            <!-- tweet message end -->
                             % if user_and_tweet["tweet_image"]:
                             <!-- tweet image start -->
-                            <div class="pt-3 pb-1 max-h-[128rem]">
-                                <img class="h-full object-cover object-center rounded-2xl border border-twitter-line hover:cursor-pointer" src="images/tweet_images/{{user_and_tweet['tweet_image']}}" alt="">
+                            <div class="pt-3 pb-1">
+                                <img class="w-full tweet-image-height object-cover object-center rounded-2xl border border-twitter-line hover:cursor-pointer" src="images/tweet_images/{{user_and_tweet['tweet_image']}}" alt="">
                             </div>
                             <!-- tweet image end -->
                             % end
