@@ -9,6 +9,8 @@
 
 .tweet-image-height {
   max-height: 128rem;
+  width: 100%;
+  aspect-ratio: initial;
 }
 
 *,
