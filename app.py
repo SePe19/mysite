@@ -41,6 +41,7 @@ def index():
         tweets = db.execute("SELECT * FROM tweets").fetchall()
         trends = db.execute("SELECT * FROM trends").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
+        print("QQQQQQQ",users)
         for user in users:
             print(user["user_id"])
         users_and_tweets = db.execute("SELECT * FROM users_and_tweets ORDER BY tweet_created_at DESC").fetchall()
