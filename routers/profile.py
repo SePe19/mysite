@@ -96,7 +96,7 @@ def _():
     # db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
     db.commit()
     print(users)
-    return users
+    return {"users":users}
   except Exception as ex:
     if "db" in locals(): db.rollback()
     print("bacon", ex)
