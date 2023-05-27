@@ -46,7 +46,7 @@ def update():
   try:
     db = dbconnection.db()
     user_cookie = dbconnection.user()
-
+    user_id = user_cookie["user_id"]
     username = user_cookie["user_name"]
     new_username = dbconnection.validate_username()
     print("NEW USERNAME POGGERS", new_username)
@@ -58,7 +58,7 @@ def update():
     print("NEW AVATAR POGGERS", new_avatar)
     if avatar != new_username and new_avatar != "" and new_avatar is not None:
       print("MMMMMMM")
-      db.execute(f"UPDATE users SET user_avatar = ? WHERE user_name = ?", (new_avatar, username))
+      db.execute(f"UPDATE users SET user_avatar = ? WHERE user_id = ?", (new_avatar, user_id))
 
     # cover = user_cookie["user_cover"]
     # new_cover = request.forms.get("cover", "")
