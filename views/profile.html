@@ -296,7 +296,6 @@
     async function update(){
         let username = document.querySelector("input[name='username_update']").value
         const avatar = document.querySelector("input[name='avatar_update']").files[0]
-        console.log(avatar)
         const formData = new FormData();
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
@@ -306,12 +305,9 @@
             body: formData
         })
         const data = await response.json()
-        console.log(data)
 
         closeUpdateModal()
         if (!username) username = data.new_username
-        console.log(username)
-        console.log(data.new_avatar)
         window.location.href= "/" + username
     }
 </script>
