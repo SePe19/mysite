@@ -73,7 +73,7 @@ def update():
 
 
     response.set_cookie("user", user_cookie, secret=os.getenv('MY_SECRET'), httponly=True)
-    return {"info": "Update succesful", "New username": user_cookie["user_name"], "New avatar": user_cookie["user_avatar"]}
+    return {"info": "Update succesful", "new_username": user_cookie["user_name"], "new_avatar": user_cookie["user_avatar"]}
 
   except Exception as ex:
     print("Put route error her", ex)
