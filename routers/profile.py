@@ -9,11 +9,11 @@ def _(username):
     db = dbconnection.db()
     user_cookie = dbconnection.user()
     user = db.execute("SELECT * FROM users WHERE user_name = ?", (username,)).fetchone()
-    print("WWWWWWW", user["user_avatar"])
     if not user:
       response.set_header("Location", "/")
       response.status = 302
       return response.body
+    print("WWWWWWW", user["user_avatar"])
     users = db.execute("SELECT * FROM users").fetchall()
     profile_tweets = db.execute("SELECT * from users_and_tweets WHERE user_name = ? ORDER BY tweet_created_at DESC", (username,)).fetchall()
     profile_tweets_images = db.execute("SELECT tweet_image FROM users_and_tweets WHERE user_name=? AND tweet_image != '' ORDER BY tweet_created_at DESC LIMIT 6", (username,)).fetchall()
