@@ -64,7 +64,8 @@
                                 <label>
                                     <input type="file" id="img" name="img" accept="image/*" class="hidden">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 3 5.5 C 3 4.119 4.119 3 5.5 3 h 13 C 19.881 3 21 4.119 21 5.5 v 13 c 0 1.381 -1.119 2.5 -2.5 2.5 h -13 C 4.119 21 3 19.881 3 18.5 v -13 Z M 5.5 5 c -0.276 0 -0.5 0.224 -0.5 0.5 v 9.086 l 3 -3 l 3 3 l 5 -5 l 3 3 V 5.5 c 0 -0.276 -0.224 -0.5 -0.5 -0.5 h -13 Z M 19 15.414 l -3 -3 l -5 5 l -3 -3 l -3 3 V 18.5 c 0 0.276 0.224 0.5 0.5 0.5 h 13 c 0.276 0 0.5 -0.224 0.5 -0.5 v -3.086 Z M 9.75 7 C 8.784 7 8 7.784 8 8.75 s 0.784 1.75 1.75 1.75 s 1.75 -0.784 1.75 -1.75 S 10.716 7 9.75 7 Z"/></svg>
-                                    <input class="hidden" type="submit">
+
+                                <input class="hidden" type="submit">
                                 </label>
 
                                 </div>
@@ -172,7 +173,7 @@
                             % if user_and_tweet["tweet_image"]:
                             <!-- tweet image start -->
                             <div class="pt-3 pb-1">
-                                <img class="max-w-full max-h-512 aspect-auto object-cover object-center rounded-2xl border border-twitter-line hover:cursor-pointer" src="images/tweet_images/{{user_and_tweet['tweet_image']}}" alt="">
+                                <img class="max-h-512 w-full object-cover object-center rounded-2xl border border-twitter-line hover:cursor-pointer" src="images/tweet_images/{{user_and_tweet['tweet_image']}}" alt="">
                             </div>
                             <!-- tweet image end -->
                             % end
