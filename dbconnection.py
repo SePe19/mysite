@@ -162,6 +162,7 @@ def avatar_picture():
     raise Exception(error)
   picture_name = str(uuid.uuid4().hex)
   picture_name = picture_name + ext
+  print("WWWWWWW DB", picture_name)
   try:
     import production
     picture.save(f"/home/19/mysite/images/avatars/{picture_name}")

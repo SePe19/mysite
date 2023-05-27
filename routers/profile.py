@@ -9,7 +9,7 @@ def _(username):
     db = dbconnection.db()
     user_cookie = dbconnection.user()
     user = db.execute("SELECT * FROM users WHERE user_name = ?", (username,)).fetchone()
-    print("WWWWWWW",user)
+    print("WWWWWWW", user["user_avatar"])
     if not user:
       response.set_header("Location", "/")
       response.status = 302
