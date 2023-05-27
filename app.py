@@ -36,7 +36,7 @@ def _(filename):
 @get("/")
 def index():
     try:
-        print("Maja howdy")
+        print("freddy boi")
         db = dbconnection.db()
         tweets = db.execute("SELECT * FROM tweets").fetchall()
         trends = db.execute("SELECT * FROM trends").fetchall()
