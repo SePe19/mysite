@@ -86,7 +86,7 @@ def update():
     print("Database closed in @put profile.py")
     if "db" in locals(): db.close()
 
-@put("/saving-bacon")
+@get("/saving-bacon")
 def _():
   try:
     db = dbconnection.db()
@@ -96,7 +96,7 @@ def _():
     # db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
     db.commit()
     print(users)
-    return "okeydokey"
+    return users
   except Exception as ex:
     if "db" in locals(): db.rollback()
     print("bacon", ex)
