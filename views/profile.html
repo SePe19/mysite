@@ -288,26 +288,26 @@
         const overlay = document.getElementById("overlay")
         modalUpdate.classList.remove("hidden")
         overlay.classList.remove("hidden")
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"
     }
     
     function closeUpdateModal() {
         modalUpdate.classList.add("hidden")
         errorMessageUsername.classList.add("hidden")
         overlay.classList.add("hidden")
-        document.body.style.overflow = "scroll";
+        document.body.style.overflow = "scroll"
     }
     
     async function update(){
         let username = document.querySelector("input[name='username_update']").value
         const avatar = document.querySelector("input[name='avatar_update']").files[0]
         const cover = document.querySelector("input[name='cover_update']").files[0]
-        const formData = new FormData();
-        if(username) formData.append('username', username);
-        if(avatar) formData.append('avatar', avatar);
-        if(cover) formData.append('cover', cover);
-        const regex = /^[a-z0-9_]{4,15}$/;
-        if (!regex.test(username)) {
+        const formData = new FormData()
+        const regex = /^[a-z0-9_]{4,15}$/
+        if(username == "" || regex.test(username)) formData.append('username', username)
+        if(avatar) formData.append('avatar', avatar)
+        if(cover) formData.append('cover', cover)
+        if (username && !regex.test(username)) {
             const errorMessageUsername = document.getElementById("errorMessageUsername")
             errorMessageUsername.classList.remove("hidden")
             errorMessageUsername.classList.add("flex")
