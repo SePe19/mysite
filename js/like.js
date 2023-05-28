@@ -7,15 +7,14 @@ async function like(tweet_id) {
         body: formData
     })
     const data = await response.json()
-    const likesCountElement = document.getElementById("likeCount")
+    const likesCountElement = document.getElementById("like_count")
     const likesCount = await getLikeCount()
     likesCountElement.textContent = likesCount
 }
 
 async function getLikeCount() {
     try {
-        const tweet_id = document.getElementById("tweet_id_likes").value
-        console.log("YUUYYUUYUYUYUY",tweet_id)
+        const tweet_id = document.getElementById("like_tweet_id").value
         console.log("YUUYYUUYUYUYUY",tweet_id)
         const response = await fetch(`/${tweet_id}/likes`);
         const clonedResponse = response.clone();

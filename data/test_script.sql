@@ -48,10 +48,10 @@ CREATE TABLE tweets(
     tweet_image                 TEXT,
     tweet_created_at            TEXT NOT NULL,
     tweet_user_fk               TEXT NOT NULL,
-    tweet_total_comments        TEXT DEFAULT 0,
-    tweet_total_retweets        TEXT DEFAULT 0,
-    tweet_total_likes           TEXT DEFAULT 0,
-    tweet_total_views           TEXT DEFAULT 0,
+    tweet_total_comments        INT DEFAULT 0,
+    tweet_total_retweets        INT DEFAULT 0,
+    tweet_total_likes           INT DEFAULT 0,
+    tweet_total_views           INT DEFAULT 0,
     PRIMARY KEY(tweet_id)
 )WITHOUT ROWID;
 
@@ -200,4 +200,37 @@ BEGIN
   UPDATE users 
   SET user_total_tweets =  user_total_tweets - 1 
   WHERE user_id = OLD.tweet_user_fk;
+END;
+
+
+
+-- #############################
+-- LIKES
+DROP TABLE IF EXISTS likes;
+CREATE TABLE likes(
+  likes_user_fk         TEXT NOT NULL,
+  likes_tweet_fk        TEXT NOT NULL,
+  UNIQUE(likes_user_fk, likes_tweet_fk)
+);
+
+INSERT INTO tweets VALUES("7d36ea9c18344874843823487d22c16c", "V MAGAZINE: CHROMATICA BALL DIARIES BY HEDI SLIMANE COVER 1", "76266667f54942d490a1ec2809d9ac2d.jpg", "1663084920", "a9890d6a78a344ec87401cdb85e38a14", 0, 0, 0, 0);
+INSERT INTO tweets VALUES("28106db01fdc496b8f8881e1d943a201", "V MAGAZINE: CHROMATICA BALL DIARIES BY HEDI SLIMANE COVER 2", "67ed34300fa640c38cfc5d01d4d8cca3.jpg", "1663099320", "a9890d6a78a344ec87401cdb85e38a14", 0, 0, 0, 0);
+
+
+DELETE FROM likes;
+
+DROP TRIGGER IF EXISTS increment_tweet_total_likes;
+CREATE TRIGGER increment_tweet_total_likes AFTER INSERT ON likes
+BEGIN
+    UPDATE tweets 
+    SET tweet_total_likes =  tweet_total_likes + 1 
+    WHERE tweet_id = NEW.likes_tweet_fk;
+END;
+
+DROP TRIGGER IF EXISTS decrement_tweet_total_likes;
+CREATE TRIGGER decrement_tweet_total_likes AFTER DELETE ON likes
+BEGIN
+    UPDATE tweets 
+    SET tweet_total_likes =  tweet_total_likes - 1 
+    WHERE tweet_id = OLD.likes_tweet_fk;
 END;
