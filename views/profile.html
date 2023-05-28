@@ -301,7 +301,6 @@
         let username = document.querySelector("input[name='username_update']").value
         const avatar = document.querySelector("input[name='avatar_update']").files[0]
         const cover = document.querySelector("input[name='cover_update']").files[0]
-        console.log(cover)
         const formData = new FormData();
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
@@ -314,15 +313,21 @@
         const data = await response.json()
         console.log("DANGERDANGER", data)
 
-        // const usernameInput = document.getElementById("usernameInput")
-        // const errorMessageUsername = document.getElementById("errorMessageUsername")
-        // usernameInput.addEventListener("input", function() {
-        //     const username = 
-        // })
+        
         closeUpdateModal()
         if (!username) username = data.new_username
         window.location.href= "/" + username
     }
+    const usernameInput = document.getElementById("usernameInput")
+    const errorMessageUsername = document.getElementById("errorMessageUsername")
+    usernameInput.addEventListener("input", function() {
+        const username = usernameInput.value
+        const regex = /^[a-z0-9]{4,15}$/;
+        if (!regex.test(username)) {
+            errorMessageUsername.classList.remove("hidden")
+            errorMessageUsername.classList.add("flex")
+        }
+    })
 </script>
 
 <script src="/js/time.js"></script>
