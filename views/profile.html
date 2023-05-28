@@ -283,6 +283,7 @@
 
 <script>
     const modalUpdate = document.getElementById("modal-update")
+    const errorMessageUsername = document.getElementById("errorMessageUsername")
 
     function updateModal() {
         const overlay = document.getElementById("overlay")
@@ -293,6 +294,7 @@
 
     function closeUpdateModal() {
         modalUpdate.classList.add("hidden")
+        errorMessageUsername.classList.add("hidden")
         overlay.classList.add("hidden")
         document.body.style.overflow = "scroll";
     }
@@ -305,7 +307,6 @@
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
         if(cover) formData.append('cover', cover);
-        const errorMessageUsername = document.getElementById("errorMessageUsername")
         const regex = /^[a-z0-9]{4,15}$/;
         if (!regex.test(username)) {
             console.log("REGEX WORKS")
