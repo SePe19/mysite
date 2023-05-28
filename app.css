@@ -11,6 +11,10 @@
   max-height: 512px;
 }
 
+.bg-red {
+  background-color: red;
+}
+
 *,
 ::before,
 ::after {
