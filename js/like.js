@@ -7,6 +7,7 @@ async function like(tweet_id) {
         body: formData
     })
     const data = await response.json()
+    console.log(data)
     const likesCountElement = document.getElementById("like_count")
     const likesCount = await getLikeCount()
     likesCountElement.textContent = likesCount
