@@ -311,6 +311,7 @@
             console.log("REGEX WORKS")
             errorMessageUsername.classList.remove("hidden")
             errorMessageUsername.classList.add("flex")
+            console.log(errorMessageUsername.classList)
         } else {
             console.log("NOT REGEX worky")
             const response = await fetch("/update", {
