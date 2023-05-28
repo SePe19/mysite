@@ -302,7 +302,7 @@
         const formData = new FormData();
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
-        if(cover) formData.append('avatar', cover);
+        if(cover) formData.append('cover', cover);
 
         const response = await fetch("/update", {
             method: "PUT", 
