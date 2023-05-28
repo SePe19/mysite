@@ -10,6 +10,7 @@ function parseTwitterNumber(number) {
 
 // Tweet Number
 function tweet_number() {
+    console.log("hej 10hi fnis")
     const elements = document.querySelectorAll(".tweet-number")
     elements.forEach(function(element) {
         const tweetNumber = element.textContent
