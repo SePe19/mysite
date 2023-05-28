@@ -311,25 +311,22 @@
             const username = usernameInput.value
             const regex = /^[a-z0-9]{4,15}$/;
             if (!regex.test(username)) {
-                console.log("COOKINGXD")
+                console.log("REGEX WORKS")
                 errorMessageUsername.classList.remove("hidden")
                 errorMessageUsername.classList.add("flex")
             } else {
-                console.log("not cookie sadge")
+                console.log("NOT REGEX worky")
                 const response = await fetch("/update", {
                     method: "PUT", 
                     body: formData
                 })
+                const data = await response.json()
+                console.log("DANGERDANGER", data)
+                closeUpdateModal()
+                if (!username) username = data.new_username
+                window.location.href= "/" + username
             }
         })
-        
-        const data = await response.json()
-        console.log("DANGERDANGER", data)
-
-        
-        closeUpdateModal()
-        if (!username) username = data.new_username
-        window.location.href= "/" + username
     }
 </script>
 
