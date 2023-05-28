@@ -49,31 +49,23 @@ def update():
     user_id = user_cookie["user_id"]
     username = user_cookie["user_name"]
     new_username = dbconnection.update_username()
-    print("NEW USERNAME POGGERS", new_username)
     if username != new_username and new_username != "" and new_username is not None:
-      print("I AM IN LINE 54")
       db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_username, username))
       user_cookie['user_name'] = new_username
     
-    
     avatar = user_cookie["user_avatar"]
     new_avatar = dbconnection.avatar_picture()
-    print("NEW AVATAR POGGERS", new_avatar)
     if avatar != new_username and new_avatar != "" and new_avatar is not None:
-      print("I AM IN LINE 63")
       db.execute(f"UPDATE users SET user_avatar = ? WHERE user_id = ?", (new_avatar, user_id))
       user_cookie['user_avatar'] = new_avatar
 
     cover = user_cookie["user_cover"]
     new_cover = dbconnection.cover_picture()
-    print("NEW COVER POGGERS", new_cover)
     if cover != new_username and new_cover != "" and new_cover is not None:
-      print("I AM IN LINE 71")
       db.execute(f"UPDATE users SET user_cover = ? WHERE user_id = ?", (new_cover, user_id))
       user_cookie['user_cover'] = new_cover
     
     db.commit()
-
 
     response.set_cookie("user", user_cookie, secret=os.getenv('MY_SECRET'), httponly=True)
     return {"info": "Update succesful", "new_username": user_cookie["user_name"], "new_avatar": user_cookie["user_avatar"], "new_cover": user_cookie["user_cover"]}

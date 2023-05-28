@@ -70,9 +70,14 @@ def validate_username():
 	return username
 
 def update_username():
-	username = request.forms.get("username", "")
-	username = username.strip()
-	return username
+  error = f"Your username has to be at least {USERNAME_MIN} to {USERNAME_MAX} lowercased english letters"
+  username = request.forms.get("username", "")
+  username = username.strip()
+  if username is None or username == "":
+    return username
+  if not re.match(USERNAME_REGEX, username): raise Exception(400, error)
+  return username
+
 
 ##############################
 #Password Validation
@@ -162,7 +167,6 @@ def avatar_picture():
     raise Exception(error)
   picture_name = str(uuid.uuid4().hex)
   picture_name = picture_name + ext
-  print("WWWWWWW DB", picture_name)
   try:
     import production
     picture.save(f"/home/19/mysite/images/avatars/{picture_name}")
@@ -182,7 +186,6 @@ def cover_picture():
     raise Exception(error)
   picture_name = str(uuid.uuid4().hex)
   picture_name = picture_name + ext
-  print("WWWWWWW DB", picture_name)
   try:
     import production
     picture.save(f"/home/19/mysite/images/covers/{picture_name}")
@@ -190,3 +193,5 @@ def cover_picture():
     picture.save(f"images/covers/{picture_name}")
   finally:
     return picture_name
+  
+
