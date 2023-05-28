@@ -70,8 +70,12 @@ def validate_username():
 	return username
 
 def update_username():
+  error = f"Your username has to be at least {USERNAME_MIN} to {USERNAME_MAX} lowercased english letters"
   username = request.forms.get("username", "")
   username = username.strip()
+  if username is None or username == "":
+    return username
+  if not re.match(USERNAME_REGEX, username): raise Exception(400, error)
   return username
 
 

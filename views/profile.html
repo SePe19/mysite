@@ -305,11 +305,24 @@
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
         if(cover) formData.append('cover', cover);
-
-        const response = await fetch("/update", {
-            method: "PUT", 
-            body: formData
+        const usernameInput = document.getElementById("usernameInput")
+        const errorMessageUsername = document.getElementById("errorMessageUsername")
+        usernameInput.addEventListener("input", async function() {
+            const username = usernameInput.value
+            const regex = /^[a-z0-9]{4,15}$/;
+            if (!regex.test(username)) {
+                console.log("COOKINGXD")
+                errorMessageUsername.classList.remove("hidden")
+                errorMessageUsername.classList.add("flex")
+            } else {
+                console.log("not cookie sadge")
+                const response = await fetch("/update", {
+                    method: "PUT", 
+                    body: formData
+                })
+            }
         })
+        
         const data = await response.json()
         console.log("DANGERDANGER", data)
 
@@ -318,16 +331,6 @@
         if (!username) username = data.new_username
         window.location.href= "/" + username
     }
-    const usernameInput = document.getElementById("usernameInput")
-    const errorMessageUsername = document.getElementById("errorMessageUsername")
-    usernameInput.addEventListener("input", function() {
-        const username = usernameInput.value
-        const regex = /^[a-z0-9]{4,15}$/;
-        if (!regex.test(username)) {
-            errorMessageUsername.classList.remove("hidden")
-            errorMessageUsername.classList.add("flex")
-        }
-    })
 </script>
 
 <script src="/js/time.js"></script>
