@@ -69,7 +69,7 @@
 
                     <!-- cover + avatar start -->
                     <div>
-                        <img class="" src="/images/covers/{{user['user_cover']}}" alt="">        
+                        <img src="/images/covers/{{user['user_cover']}}" alt="">
                         <div class="flex justify-between px-4">
                             <img class="rounded-full border-2 lg:border-4 border-black h-36 w-24 lg:w-36 -mt-12 lg:-mt-20 aspect-square" src="/images/avatars/{{user['user_avatar']}}" alt="">
                             <div class="flex items-center gap-2">
@@ -102,7 +102,7 @@
                                 </div>
                                 % end
                             </div> 
-                            <p class="text-15 text-twitter-grey">@{{user["user_name"]}}</p>                      
+                            <p class="text-15 text-twitter-grey">@{{user["user_name"]}}</p>
                         </div>
 
                         <div class="flex items-center text-twitter-grey gap-1 mt-2">
@@ -272,6 +272,8 @@
                 <input type="text" name="username_update" placeholder="Username" class="rounded-xl p-2 mt-4 w-80">
                 <span class="text-white text-23 font-bold mt-4">Change profile picture</span>
                 <input class="rounded-xl p-2 mt-4 w-80 bg-white" type="file" name="avatar_update" id="avatarUpload" accept=".jpg, .jpeg, .png, .webp, .gif"/>
+                <span class="text-white text-23 font-bold mt-4">Change cover picture</span>
+                <input class="rounded-xl p-2 mt-4 w-80 bg-white" type="file" name="cover_update" id="coverUpload" accept=".jpg, .jpeg, .png, .webp, .gif"/>
                 <button onclick="update()" class="bg-twitter-blue text-white rounded-3xl px-6 py-2 font-semibold w-80 mt-4 mb-8 hover:bg-opacity-90">Confirm</button>
             </div>
     </section>
@@ -295,9 +297,12 @@
     async function update(){
         let username = document.querySelector("input[name='username_update']").value
         const avatar = document.querySelector("input[name='avatar_update']").files[0]
+        const cover = document.querySelector("input[name='cover_update']").files[0]
+        console.log(cover)
         const formData = new FormData();
         if(username) formData.append('username', username);
         if(avatar) formData.append('avatar', avatar);
+        if(cover) formData.append('avatar', cover);
 
         const response = await fetch("/update", {
             method: "PUT", 

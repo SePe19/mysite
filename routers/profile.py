@@ -64,16 +64,19 @@ def update():
       db.execute(f"UPDATE users SET user_avatar = ? WHERE user_id = ?", (new_avatar, user_id))
       user_cookie['user_avatar'] = new_avatar
 
-    # cover = user_cookie["user_cover"]
-    # new_cover = request.forms.get("cover", "")
-    # if cover != new_cover
-    #   db.execute(f"UPDATE users SET user_name = ? WHERE user_name = ?", (new_cover, username))
+    cover = user_cookie["user_cover"]
+    new_cover = dbconnection.cover_picture()
+    print("NEW COVER POGGERS", new_cover)
+    if cover != new_username and new_cover != "" and new_cover is not None:
+      print("I AM IN LINE 71")
+      db.execute(f"UPDATE users SET user_cover = ? WHERE user_id = ?", (new_cover, user_id))
+      user_cookie['user_cover'] = new_cover
     
     db.commit()
 
 
     response.set_cookie("user", user_cookie, secret=os.getenv('MY_SECRET'), httponly=True)
-    return {"info": "Update succesful", "new_username": user_cookie["user_name"], "new_avatar": user_cookie["user_avatar"]}
+    return {"info": "Update succesful", "new_username": user_cookie["user_name"], "new_avatar": user_cookie["user_avatar"], "new_cover": user_cookie["user_cover"]}
 
   except Exception as ex:
     print("Put route error her", ex)

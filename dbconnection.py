@@ -170,3 +170,23 @@ def avatar_picture():
     picture.save(f"images/avatars/{picture_name}")
   finally:
     return picture_name
+  
+def cover_picture():
+  error = "Picture file not valid"
+  picture = request.files.get("cover", "")
+  if picture is None or picture == "":
+    return picture
+  name, ext = os.path.splitext(picture.filename)
+  if ext not in (".png", ".jpg", ".jpeg", ".webp", ".gif"):
+    response.status = 400
+    raise Exception(error)
+  picture_name = str(uuid.uuid4().hex)
+  picture_name = picture_name + ext
+  print("WWWWWWW DB", picture_name)
+  try:
+    import production
+    picture.save(f"/home/19/mysite/images/covers/{picture_name}")
+  except:
+    picture.save(f"images/covers/{picture_name}")
+  finally:
+    return picture_name
