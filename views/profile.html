@@ -307,7 +307,7 @@
         if(cover) formData.append('cover', cover);
         const usernameInput = document.getElementById("usernameInput")
         const errorMessageUsername = document.getElementById("errorMessageUsername")
-        usernameInput.addEventListener("input", async function() {
+        usernameInput.addEventListener("submit", async function() {
             const username = usernameInput.value
             const regex = /^[a-z0-9]{4,15}$/;
             if (!regex.test(username)) {
