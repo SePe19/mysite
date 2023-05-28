@@ -8,19 +8,11 @@ import os
 
 @post("/f10b10c9cc6e4a13ae09a13d1181a6b1")
 def git_update():
-    repo = git.Repo("./mysite")
+    repo = git.Repo('./mysite')
     origin = repo.remotes.origin
-    branch_name = "main"
-    ref = f"refs/heads/{branch_name}"
-    after_commit = request.json.get("after")
-
-    if ref in repo.refs and repo.refs[ref].commit.hexsha != after_commit:
-        repo.git.stash()
-        repo.git.checkout(branch_name)
-        origin.pull()
-        repo.git.stash.apply()
-
-    return "Everything OK"
+    repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+    origin.pull()
+    return ""
 
 
 ##############################
