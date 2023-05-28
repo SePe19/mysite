@@ -310,6 +310,7 @@
             body: formData
         })
         const data = await response.json()
+        console.log("DANGERDANGER", data)
 
         closeUpdateModal()
         if (!username) username = data.new_username
