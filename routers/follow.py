@@ -1,5 +1,4 @@
 from bottle import get, post, request, response
-from dotenv import load_dotenv
 import dbconnection
 
 @post("/follow")
