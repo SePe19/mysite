@@ -11,7 +11,7 @@ async function like(tweet_id) {
     const likesCountElement = document.querySelector("span[name='like_count']")
     const likesCount = await getLikeCount()
     console.log(likesCountElement.innerHTML)
-    likesCountElement.innerHTML = likesCount
+    likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     console.log(likesCountElement.innerHTML)
 }
 
