@@ -15,6 +15,11 @@
   background-color: red;
 }
 
+.avatar {
+  height: 36rem;
+  width: 36rem;
+}
+
 *,
 ::before,
 ::after {
