@@ -25,6 +25,10 @@
   width: fit-content + 1px;
 }
 
+.cover {
+  max-height: 400px;
+}
+
 *,
 ::before,
 ::after {
