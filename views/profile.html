@@ -71,7 +71,9 @@
                     <div>
                         <img src="/images/covers/{{user['user_cover']}}" alt="">
                         <div class="flex justify-between px-4">
-                            <img class="rounded-full border-2 lg:border-4 border-black avatar -mt-12 lg:-mt-20 aspect-square" src="/images/avatars/{{user['user_avatar']}}" alt="">
+                            <div class="h-fit w-fit bg-black rounded-full">
+                                <img class="rounded-full border-2 lg:border-4 border-black avatar -mt-12 lg:-mt-20 aspect-square" src="/images/avatars/{{user['user_avatar']}}" alt="">
+                            </div>
                             <div class="flex items-center gap-2">
                                 % if not get("user_cookie"):
                                 <button class="p-2 ml-auto border hover:bg-twitter-dark-hover border-twitter-grey rounded-full font-semibold text-twitter-light-grey text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="currentColor" stroke="" stroke-linecap="round" stroke-linejoin="round" d="M 3 12 c 0 -1.1 0.9 -2 2 -2 s 2 0.9 2 2 s -0.9 2 -2 2 s -2 -0.9 -2 -2 Z m 9 2 c 1.1 0 2 -0.9 2 -2 s -0.9 -2 -2 -2 s -2 0.9 -2 2 s 0.9 2 2 2 Z m 7 0 c 1.1 0 2 -0.9 2 -2 s -0.9 -2 -2 -2 s -2 0.9 -2 2 s 0.9 2 2 2 Z"/></svg></button>
