@@ -25,8 +25,8 @@
 
             <span class="text-white text-23 font-bold mt-4">Sign in to Twitter</span>
 
-            <input type="text" name="username_login" placeholder="Username"  class="login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80">
-            <input type="password" name="password_login"  placeholder="Password" class="login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80">
+            <input type="text" name="username_login" placeholder="Username"  class="login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" onkeydown="loginSubmit(event)">
+            <input type="password" name="password_login"  placeholder="Password" class="login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" onkeydown="loginSubmit(event)">
 
             <button onclick="login()" class="bg-twitter-blue text-white rounded-full px-6 py-2 font-semibold w-80 mt-4 mb-8 hover:bg-opacity-90">
                 Log in
@@ -37,8 +37,8 @@
                     <p class="text-twitter-grey">Forgot password?</p>&nbsp;
                     <p id="bottomResetPassword" onclick="showResetPassword()" class="text-twitter-blue hover:underline cursor-pointer">Reset password</p>
                 </div>
-                <input id="passwordInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="password" placeholder="New password">
-                <input id="emailInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="email" placeholder="Email" onkeydown="enterSubmit(event)">
+                <input id="passwordInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="password" placeholder="New password" onkeydown="resetSubmit(event)">
+                <input id="emailInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="email" placeholder="Email" onkeydown="resetSubmit(event)">
                 <button id="resetEmailButton" onclick="resetPassword()" class="hidden bg-twitter-blue text-white rounded-full px-6 py-2 font-semibold w-80 mt-4 hover:bg-opacity-90" type="submit">Send reset email</button>
             </div>
 

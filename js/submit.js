@@ -1,7 +1,23 @@
-function enterSubmit(event) {
-    console.log(event.key)
+function loginSubmit(event) {
     if (event.key === "Enter") {
-        console.log(event.key)
-        // login();
+        login()
+    }
+}
+
+function signupSubmit(event) {
+    if (event.key === "Enter") {
+        signUp()
+    }
+}
+
+function resetSubmit(event) {
+    if (event.key === "Enter") {
+        resetPassword()
+    }
+}
+
+function tweetSubmit(event) {
+    if (event.key === "Enter") {
+        tweet()
     }
 }
