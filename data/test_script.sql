@@ -228,33 +228,3 @@ BEGIN
     SET tweet_total_likes =  tweet_total_likes - 1 
     WHERE tweet_id = OLD.likes_tweet_fk;
 END;
-
-
-
-
--- INNER
-
-SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
-FROM users
-INNER JOIN tweets ON users.user_id = tweets.tweet_user_fk;
-
-
--- LEFT
-
-SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
-FROM users
-LEFT JOIN tweets ON users.user_id = tweets.tweet_user_fk;
-
-
--- RIGHT
-
-SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
-FROM users
-RIGHT JOIN tweets ON users.user_id = tweets.tweet_user_fk;
-
-
--- FULL
-
-SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
-FROM users
-FULL OUTER JOIN tweets ON users.user_id = tweets.tweet_user_fk;
