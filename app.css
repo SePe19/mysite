@@ -20,6 +20,11 @@
   width: 9rem;
 }
 
+.fit-avatar {
+  height: fit-content + 1px;
+  width: fit-content + 1px;
+}
+
 *,
 ::before,
 ::after {
