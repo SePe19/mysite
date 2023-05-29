@@ -23,8 +23,8 @@ INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk", "Elon",
 INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "RSprachrohr", "Rammstein", "", "rsp@mail.dk", "123", "1", "a9890d6a78a344ec87401cdb85e38a17", "0d9b9dd5bde54e338b6335ea0b8eb265.jpg", "c5fbc4cc1aa94940a67c07c873d86352.jpg", "1280689719", "313", "0", "536300");
 
 UPDATE users
-SET user_name = "ladygakgak"
-WHERE user_name = "ladygaga";
+SET user_name = "ladygaga"
+WHERE user_name = "ladygakgak";
 
 CREATE INDEX idx_users_user_first_name ON users(user_first_name);
 CREATE INDEX idx_users_user_last_name ON users(user_last_name);
@@ -53,7 +53,7 @@ CREATE TABLE tweets(
     tweet_total_likes           INT DEFAULT 0,
     tweet_total_views           INT DEFAULT 0,
     PRIMARY KEY(tweet_id)
-)WITHOUT ROWID;
+) WITHOUT ROWID;
 
 -- Lady Gaga
 -- INSERT INTO tweets VALUES("tweet_id", "tweet_message", "tweet_image.jpg", "tweet_created_at", "tweet_user_fk", "tweet_total_comments", "tweet_total_retweets", "tweet_total_likes", "tweet_total_views");
@@ -228,3 +228,33 @@ BEGIN
     SET tweet_total_likes =  tweet_total_likes - 1 
     WHERE tweet_id = OLD.likes_tweet_fk;
 END;
+
+
+
+
+-- INNER
+
+SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
+FROM users
+INNER JOIN tweets ON users.user_id = tweets.tweet_user_fk;
+
+
+-- LEFT
+
+SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
+FROM users
+LEFT JOIN tweets ON users.user_id = tweets.tweet_user_fk;
+
+
+-- RIGHT
+
+SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
+FROM users
+RIGHT JOIN tweets ON users.user_id = tweets.tweet_user_fk;
+
+
+-- FULL
+
+SELECT users.user_id, users.user_name, users.user_first_name, tweets.tweet_id
+FROM users
+FULL OUTER JOIN tweets ON users.user_id = tweets.tweet_user_fk;

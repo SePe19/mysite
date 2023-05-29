@@ -32,20 +32,20 @@ def _():
         salt = bcrypt.gensalt()
 
         user = {
-        "id" : id,
-        "username" : username,
-        "first_name": first_name,
-        "last_name": last_name,
-        "email": email,
-        "password" : bcrypt.hashpw(password.encode("utf-8"), salt),
-        "user_verified" : user_verified,
-        "user_verification_token" : user_verification_token,
-        "user_avatar" : user_avatar,
-        "user_cover" : user_cover,
-        "user_created_at" : user_created_at,
-        "user_total_tweets" : user_total_tweets,
-        "user_total_following" : user_total_following,
-        "user_total_followers" : user_total_followers
+            "id" : id,
+            "username" : username,
+            "first_name": first_name,
+            "last_name": last_name,
+            "email": email,
+            "password" : bcrypt.hashpw(password.encode("utf-8"), salt),
+            "user_verified" : user_verified,
+            "user_verification_token" : user_verification_token,
+            "user_avatar" : user_avatar,
+            "user_cover" : user_cover,
+            "user_created_at" : user_created_at,
+            "user_total_tweets" : user_total_tweets,
+            "user_total_following" : user_total_following,
+            "user_total_followers" : user_total_followers
         }
 
         print(user)
