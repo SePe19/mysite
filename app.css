@@ -16,8 +16,8 @@
 }
 
 .container {
-  width: 400px; /* Adjust the width and height to match your div container */
-  height: 200px;
+  width: 100%; /* Adjust the width and height to match your div container */
+  height: 300px;
   overflow: hidden; /* Hide any overflowing content */
   background-size: cover;
   background-position: center center;
