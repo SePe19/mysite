@@ -12,8 +12,7 @@ def send_reset_email():
     try:
         db = dbconnection.db()
         user_email = request.forms.get("email")
-        user_password = request.forms.get("password")
-        # user_password = dbconnection.validate_password()
+        user_password = dbconnection.validate_password()
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
             print("HELLO FROM THE OTHER SIDE3")
@@ -75,8 +74,8 @@ def email_verification(user_email, username):
         html = """\
         <html>
             <body>
-                <p>Hi and welcome to Twitter!<br>
-                    Thank you for signing up<br>
+                <p>Hi {username}!<br>
+                    Welcome back! Upon clicking the link your password will be changed, and you can now log in with your new password!<br>
                     <a href="{url}/{username}">{url}/{username}</a>
                 </p>
             </body>
