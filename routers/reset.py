@@ -18,7 +18,8 @@ def send_reset_email():
         if user:
             print("HELLO FROM THE OTHER SIDE")
             user_active = 0
-            db.execute("UPDATE users SET user_password = ? AND user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
+            user_deactive = db.execute("UPDATE users SET user_password = ? AND user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
+            print("DANGERDANGER",user_deactive)
             db.commit()
             email_verification(user_email, user["user_name"])
         return {"info reset":"Succesfully sent reset password email"}
