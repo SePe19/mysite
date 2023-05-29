@@ -15,6 +15,18 @@
   background-color: red;
 }
 
+.container {
+  width: 400px; /* Adjust the width and height to match your div container */
+  height: 200px;
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+
 *,
 ::before,
 ::after {
