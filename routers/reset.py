@@ -1,6 +1,7 @@
 from bottle import get, post, request, response
 import dbconnection
 from dotenv import load_dotenv
+import bcrypt
 import os
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -12,7 +13,8 @@ def send_reset_email():
     try:
         db = dbconnection.db()
         user_email = request.forms.get("email")
-        user_password = dbconnection.validate_password()
+        salt = bcrypt.gensalt()
+        user_password = bcrypt.hashpw(dbconnection.validate_password().encode("utf-8"), salt)
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
             print("HELLO FROM THE OTHER SIDE3")
