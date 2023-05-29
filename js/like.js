@@ -10,7 +10,9 @@ async function like(tweet_id) {
     console.log("COOK",data)
     const likesCountElement = document.querySelector("input[name='like_count']")
     const likesCount = await getLikeCount()
+    console.log(likesCountElement.textContent)
     likesCountElement.textContent = likesCount
+    console.log(likesCountElement.textContent)
 }
 
 async function getLikeCount() {
