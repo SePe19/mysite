@@ -16,6 +16,7 @@ def send_reset_email():
         # user_password = dbconnection.validate_password()
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
+            print("HELLO FROM THE OTHER SIDE")
             user_active = 0
             db.execute("UPDATE users SET user_password = ? AND user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
             db.commit()
