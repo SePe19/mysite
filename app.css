@@ -16,13 +16,11 @@
 }
 
 .container {
-  width: 100%; /* Adjust the width and height to match your div container */
+  width: 400px; /* Adjust the width and height to match your div container */
+  height: 200px;
   overflow: hidden; /* Hide any overflowing content */
-}
-
-.container img {
-  width: 100%;
-  height: auto;
+  background-size: cover;
+  background-position: center center;
 }
 
 
