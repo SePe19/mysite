@@ -12,7 +12,7 @@ def send_reset_email():
     try:
         db = dbconnection.db()
         user_email = request.forms.get("email")
-        user_password = request.forms.get("user_password")
+        user_password = request.forms.get("password")
         # user_password = dbconnection.validate_password()
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
