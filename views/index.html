@@ -281,8 +281,6 @@
     async function tweet(){
         const message = document.querySelector("input[name='message']").value
         const picture = document.querySelector("input[name='img']").files[0]
-        console.log("picture name", picture)
-        console.log(message, "This is our tweet message")
         const formData = new FormData();
         
         formData.append("tweet_message", message);
@@ -294,7 +292,6 @@
         })
         
         const data = await response.json()
-        console.log("This is the data", data)
         window.location.reload()
     }
 </script>
