@@ -211,6 +211,8 @@ CREATE TABLE likes(
   UNIQUE(likes_user_fk, likes_tweet_fk)
 );
 
+INSERT INTO likes VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "ba3c61501bba48afa673a99f6e0e0977");
+
 DROP TRIGGER IF EXISTS increment_tweet_total_likes;
 CREATE TRIGGER increment_tweet_total_likes AFTER INSERT ON likes
 BEGIN
