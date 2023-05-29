@@ -41,19 +41,17 @@ def index():
         tweets = db.execute("SELECT * FROM tweets").fetchall()
         trends = db.execute("SELECT * FROM trends").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
-        likes = db.execute("SELECT * FROM likes").fetchall()
-        if likes:
-            print("LIKESHERE", likes)
+        
         user_cookie = dbconnection.user()
         users_and_tweets = db.execute("SELECT * FROM users_and_tweets ORDER BY tweet_created_at DESC").fetchall()
         if user_cookie is None:
             return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets)
-        if get("user_cookie"):
+        if user_cookie:
             user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
             if user:
                 user.pop("user_password")
                 user_cookie = user
-        return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets, likes=likes, user_cookie=user_cookie)
+        return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets, user_cookie=user_cookie)
     except Exception as ex:
         print("fejl",ex)
         response.status = 400
