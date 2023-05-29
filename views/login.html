@@ -33,6 +33,13 @@
             </button>
 
             <div class="flex gap-1 justify-start">
+                <p class="text-twitter-grey">Forgot password?</p>
+                <a id="bottomResetPassword" class="text-twitter-blue hover:underline" href="">Reset password</a>
+                <input id="resetPasswordInput" class="hidden" type="text" onclick="showResetPassword()">
+                <button id="resetPasswordButton" class="hidden" type="submit">Send reset email</button>
+            </div>
+
+            <div class="flex gap-1 justify-start">
                 <p class="text-twitter-grey">Don't have an account?</p>
                 <a id="#bottom-signup" onclick="signupModal()" class="text-twitter-blue hover:underline" href="">Sign up</a>
             </div>
@@ -43,48 +50,63 @@
 
 <script>
     
-        const modalLogin = document.getElementById("modal-login")
+    const modalLogin = document.getElementById("modal-login")
 
+    
+    function loginModal() {
+        const overlay = document.getElementById("overlay")
+        modalLogin.classList.remove("hidden")
+        overlay.classList.remove("hidden")
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeLoginModal() {
+        modalLogin.classList.add("hidden")
+        overlay.classList.add("hidden")
+        document.body.style.overflow = "scroll";
+    }
+
+    async function login() {
+        const username = document.querySelector("input[name='username_login']").value
+        const password = document.querySelector("input[name='password_login']").value
+        console.log("this is the username", username)
+        const formData = new FormData();
+
+
+        formData.append('username', username);
+        formData.append('password', password);
         
-        function loginModal() {
-            const overlay = document.getElementById("overlay")
-            modalLogin.classList.remove("hidden")
-            overlay.classList.remove("hidden")
-            document.body.style.overflow = "hidden";
+        for (const value of formData.values()) {
+            console.log(value);
         }
 
-        function closeLoginModal() {
-            modalLogin.classList.add("hidden")
-            overlay.classList.add("hidden")
-            document.body.style.overflow = "scroll";
-        }
+        const response = await fetch("/login", {
+            method: "POST", 
+            body: formData
+        })
+        const data = await response.json()
+        console.log("This is the right username", username)
+        console.log("This is the data", data)
 
-        async function login() {
-            const username = document.querySelector("input[name='username_login']").value
-            const password = document.querySelector("input[name='password_login']").value
-            console.log("this is the username", username)
-            const formData = new FormData();
+        closeLoginModal()
 
+        window.location.reload();
+    }
 
-            formData.append('username', username);
-            formData.append('password', password);
-            
-            for (const value of formData.values()) {
-                console.log(value);
-            }
+    function showResetPassword() {
+        const resetPasswordInput = document.getElementById("resetPasswordInput")
+        const resetPasswordButton = document.getElementById("resetPasswordButton")
 
-            const response = await fetch("/login", {
-                method: "POST", 
-                body: formData
-            })
-            const data = await response.json()
-            console.log("This is the right username", username)
-            console.log("This is the data", data)
+        resetPasswordInput.classList.remove("hidden")
+        resetPasswordButton.classList.remove("hidden")
+    }
+    async function resetPassword() {
 
-            closeLoginModal()
-
-            window.location.reload();
-        }
+        const response = await fetch("/reset-password", {
+            method: "POST", 
+            body: formData
+        })
+    }
 </script>
 
 </body>
