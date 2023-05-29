@@ -37,7 +37,7 @@ def _(filename):
 @get("/")
 def index():
     try:
-        print("webhook fucked?")
+        print("webhook fucked?2")
         db = dbconnection.db()
         tweets = db.execute("SELECT * FROM tweets").fetchall()
         trends = db.execute("SELECT * FROM trends").fetchall()
