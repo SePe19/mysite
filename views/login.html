@@ -34,8 +34,8 @@
 
             <div class="flex gap-1 justify-start">
                 <p class="text-twitter-grey">Forgot password?</p>
-                <a id="bottomResetPassword" class="text-twitter-blue hover:underline" href="">Reset password</a>
-                <input id="resetPasswordInput" class="hidden" type="text" onclick="showResetPassword()">
+                <a id="bottomResetPassword" onclick="showResetPassword()" class="text-twitter-blue hover:underline" href="">Reset password</a>
+                <input id="resetPasswordInput" class="hidden" type="text">
                 <button id="resetPasswordButton" class="hidden" type="submit">Send reset email</button>
             </div>
 
@@ -98,7 +98,8 @@
         const resetPasswordButton = document.getElementById("resetPasswordButton")
 
         resetPasswordInput.classList.remove("hidden")
-        resetPasswordButton.classList.remove("hidden")
+        resetPasswo
+        rdButton.classList.remove("hidden")
     }
     async function resetPassword() {
 
