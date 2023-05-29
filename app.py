@@ -37,12 +37,12 @@ def _(filename):
 @get("/")
 def index():
     try:
-        print("webhook fucked?2")
         db = dbconnection.db()
         tweets = db.execute("SELECT * FROM tweets").fetchall()
         trends = db.execute("SELECT * FROM trends").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
         likes = db.execute("SELECT * FROM likes").fetchall()
+        print("LIKESHERE", likes)
         user_cookie = dbconnection.user()
         users_and_tweets = db.execute("SELECT * FROM users_and_tweets ORDER BY tweet_created_at DESC").fetchall()
         if user_cookie is None:
