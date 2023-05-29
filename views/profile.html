@@ -74,7 +74,7 @@
                         </div>                        
                         <div class="flex justify-between px-4">
                             <div class="fit-avatar bg-black rounded-full -mt-12 lg:-mt-20">
-                                <img class="rounded-full border-2 lg:border-4 border-black avatar aspect-square" src="/images/avatars/{{user['user_avatar']}}" alt="">
+                                <img class="rounded-full border-2 lg:border-4 border-black avatar aspect-square" src="/images/avatars/{{user['user_avatar']}}" alt="" onkeydown="enterSubmit()">
                             </div>
                             <div class="flex items-center gap-2">
                                 % if not get("user_cookie"):
