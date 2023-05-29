@@ -54,7 +54,6 @@ def index():
                 user.pop("user_password")
                 user_cookie = user
         following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
-        print("FOLLOWINGFUCIKNGUP?", type(following), following)
         return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets, likes=likes, user_cookie=user_cookie)
     except Exception as ex:
         print("fejl",ex)
