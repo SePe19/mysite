@@ -20,7 +20,7 @@ def _():
         dbconnection.validate_confirm_password()
         first_name = request.forms.get("first_name", "")
         last_name = request.forms.get("last_name", "")
-        user_verified = request.forms.get("user_verified", "")
+        user_verified = request.forms.get("user_verified", 0)
         user_verification_token = str(uuid.uuid4().hex)
         user_avatar = request.forms.get("user_avatar", "default.jpg")
         user_cover = request.forms.get("user_cover", "default-cover.png")
