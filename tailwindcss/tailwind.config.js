@@ -46,9 +46,6 @@ module.exports = {
         '640': '40rem',
         '990': '61.875',
       },
-      maxHeight: {
-        '32': '32rem',
-      },
       margin: {
         '18': '4.5'
       },
