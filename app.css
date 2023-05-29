@@ -17,7 +17,6 @@
 
 .container {
   width: 100%; /* Adjust the width and height to match your div container */
-  height: 400px;
   overflow: hidden; /* Hide any overflowing content */
 }
 
