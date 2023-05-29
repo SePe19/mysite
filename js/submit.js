@@ -1,6 +1,7 @@
 function enterSubmit(event) {
-    console.log(event)
-    // if (event.keyCode === 13) {
+    console.log(event.key)
+    // if (event.key === "Enter") {
+        console.log(event.key)
     //     // login();
     // }
 }
