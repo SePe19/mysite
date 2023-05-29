@@ -25,9 +25,10 @@ def _():
         user_avatar = request.forms.get("user_avatar", "default.jpg")
         user_cover = request.forms.get("user_cover", "default-cover.png")
         user_created_at = int(time.time())
-        user_total_tweets = request.forms.get("user_total_tweets", "0")
-        user_total_following = request.forms.get("user_total_following", "0")
-        user_total_followers = request.forms.get("user_total_followers", "0")
+        user_total_tweets = request.forms.get("user_total_tweets", 0)
+        user_total_following = request.forms.get("user_total_following", 0)
+        user_total_followers = request.forms.get("user_total_followers", 0)
+        user_active = request.forms.get("user_active", 1)
 
         salt = bcrypt.gensalt()
 
@@ -45,7 +46,8 @@ def _():
             "user_created_at" : user_created_at,
             "user_total_tweets" : user_total_tweets,
             "user_total_following" : user_total_following,
-            "user_total_followers" : user_total_followers
+            "user_total_followers" : user_total_followers,
+            "user_active" : user_active
         }
 
         print(user)

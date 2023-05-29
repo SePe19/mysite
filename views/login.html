@@ -37,8 +37,9 @@
                     <p class="text-twitter-grey">Forgot password?</p>&nbsp;
                     <p id="bottomResetPassword" onclick="showResetPassword()" class="text-twitter-blue hover:underline cursor-pointer">Reset password</p>
                 </div>
-                <input id="resetPasswordInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="text">
-                <button id="resetPasswordButton" class="hidden bg-twitter-blue text-white rounded-full px-6 py-2 font-semibold w-80 mt-2 mb-2 hover:bg-opacity-90" type="submit">Send reset email</button>
+                <input id="passwordInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="password">
+                <input id="emailInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="email">
+                <button id="resetPasswordButton" onclick="resetPassword()" class="hidden bg-twitter-blue text-white rounded-full px-6 py-2 font-semibold w-80 mt-4 hover:bg-opacity-90" type="submit">Send reset email</button>
             </div>
 
             <div class="flex gap-1 justify-start">
@@ -51,9 +52,7 @@
 
 
 <script>
-    
     const modalLogin = document.getElementById("modal-login")
-
     
     function loginModal() {
         const overlay = document.getElementById("overlay")
@@ -95,19 +94,30 @@
         window.location.reload();
     }
 
+    const passwordInput = document.getElementById("passwordInput")
+    const emailInput = document.getElementById("emailInput")
     function showResetPassword() {
-        const resetPasswordInput = document.getElementById("resetPasswordInput")
         const resetPasswordButton = document.getElementById("resetPasswordButton")
-
-        resetPasswordInput.classList.remove("hidden")
         resetPasswordButton.classList.remove("hidden")
+        passwordInput.classList.remove("hidden")
+        emailInput.classList.remove("hidden")
     }
+
     async function resetPassword() {
+        const password = passwordInput.value
+        const email = emailInput.value
+        console.log(password, email)
+        const formData = new FormData();
+        formData.append('password', password);
+        formData.append('email', email);
 
         const response = await fetch("/reset-password", {
             method: "POST", 
             body: formData
         })
+
+        const data = await response.json()
+        console.log("EMIIIIIIIIL", data)
     }
 </script>
 

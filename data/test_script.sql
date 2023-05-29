@@ -11,16 +11,17 @@ CREATE TABLE users(
     user_avatar                 TEXT DEFAULT "default.jpg",
     user_cover                  TEXT DEFAULT "default-cover.png",
     user_created_at             TEXT NOT NULL,
-    user_total_tweets           TEXT DEFAULT 0,
+    user_total_tweets           INT DEFAULT 0,
     user_total_following        INT DEFAULT 0,
     user_total_followers        INT DEFAULT 0,
+    user_active                 INT DEFAULT 1,
     PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
 
 -- INSERT INTO users VALUES("user_id", "user_name", "user_first_name", "user_last_name", "user_email", "user_password", "user_verified", "user_avatar.jpg", "user_cover.jpg", "user_created_at", "user_total_tweets", "user_total_following", "user_total_followers");
-INSERT INTO users VALUES("a9890d6a78a344ec87401cdb85e38a14", "ladygaga", "Lady", "Gaga", "gaga@gakgak.dk", "123", "1", "a9890d6a78a344ec87401cdb85e38a12", "046d38ab9a094b8fb4993d9e2f2131b6.jpg", "b7add1c2b384480bacfdc615c8a3e5aa.jpg", "1204326000", "9936", "116300", "84800000");
-INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk", "Elon", "Musk", "elon@mail.dk", "123", "0", "a9890d6a78a344ec87401cdb85e38a19", "0df4ab53a8b14dd0925f6f2d1689c2c6.jpg", "47939906fea84cd28d7c56ac30d63a02.jpg", "1243883319", "23300", "182", "130700000");
-INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "RSprachrohr", "Rammstein", "", "rsp@mail.dk", "123", "1", "a9890d6a78a344ec87401cdb85e38a17", "0d9b9dd5bde54e338b6335ea0b8eb265.jpg", "c5fbc4cc1aa94940a67c07c873d86352.jpg", "1280689719", "313", "0", "536300");
+INSERT INTO users VALUES("a9890d6a78a344ec87401cdb85e38a14", "ladygaga", "Lady", "Gaga", "gaga@gakgak.dk", "123", "1", "a9890d6a78a344ec87401cdb85e38a12", "046d38ab9a094b8fb4993d9e2f2131b6.jpg", "b7add1c2b384480bacfdc615c8a3e5aa.jpg", "1204326000", "9936", 116300, 84800000, 1);
+INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk", "Elon", "Musk", "elon@mail.dk", "123", "0", "a9890d6a78a344ec87401cdb85e38a19", "0df4ab53a8b14dd0925f6f2d1689c2c6.jpg", "47939906fea84cd28d7c56ac30d63a02.jpg", "1243883319", "23300", 182, 130700000, 1);
+INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "RSprachrohr", "Rammstein", "", "rsp@mail.dk", "123", "1", "a9890d6a78a344ec87401cdb85e38a17", "0d9b9dd5bde54e338b6335ea0b8eb265.jpg", "c5fbc4cc1aa94940a67c07c873d86352.jpg", "1280689719", "313", 0, 536300, 1);
 
 UPDATE users
 SET user_name = "ladygaga"
