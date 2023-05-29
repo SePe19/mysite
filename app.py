@@ -48,7 +48,7 @@ def index():
         users_and_tweets = db.execute("SELECT * FROM users_and_tweets ORDER BY tweet_created_at DESC").fetchall()
         if user_cookie is None:
             return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets)
-        if user_cookie:
+        if get("user_cookie"):
             user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
             if user:
                 user.pop("user_password")
