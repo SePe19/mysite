@@ -26,9 +26,10 @@ async function getLikeCount() {
         console.log(data)
 
         if (clonedResponse.ok) {
-        return data.likes;
+            console.log("RESPONSE OK",data)
+            return data.likes;
         } else {
-        throw new Error("Error fetching likes count: Invalid response");
+            throw new Error("Error fetching likes count: Invalid response");
         }
     } catch (error) {
         console.error("Error fetching likes count:", error);
