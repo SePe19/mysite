@@ -40,7 +40,7 @@ def reset_password(username):
         db.commit()
         if not rows_affected:
             raise Exception("User not found")
-        response.set_header("Location", f"/{username}")
+        response.set_header("Location", "/")
         response.status = 302
         return response.body
     except Exception as e:
