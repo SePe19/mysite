@@ -11,9 +11,9 @@ async function like(tweet_id) {
     const likesCountElement = document.querySelector("input[name='like_count']")
     console.log(likesCountElement)
     const likesCount = await getLikeCount()
-    console.log(likesCountElement.textContent)
-    likesCountElement.textContent = likesCount
-    console.log(likesCountElement.textContent)
+    console.log(likesCountElement.innerHTML)
+    likesCountElement.innerHTML = likesCount
+    console.log(likesCountElement.innerHTML)
 }
 
 async function getLikeCount() {
@@ -23,10 +23,8 @@ async function getLikeCount() {
         const clonedResponse = response.clone();
 
         const data = await clonedResponse.json();
-        console.log(data)
 
         if (clonedResponse.ok) {
-            console.log("RESPONSE OK",data.likes)
             return data.likes;
         } else {
             throw new Error("Error fetching likes count: Invalid response");
