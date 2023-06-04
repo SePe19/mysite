@@ -10,7 +10,7 @@ def _():
     db = dbconnection.db()
     user = dbconnection.user()
 
-    picture = dbconnection.picture()
+    picture = dbconnection.tweet_picture()
     tweet_id = str(uuid.uuid4().hex)
     tweet_message = dbconnection.validate_tweet()
     tweet_image = picture
