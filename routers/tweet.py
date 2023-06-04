@@ -16,21 +16,21 @@ def _():
     tweet_image = picture
     tweet_created_at = int(time.time())
     tweet_user_fk = user["user_id"]
-    tweet_total_comments = request.forms.get("tweet_total_comments", "")
-    tweet_total_retweets = request.forms.get("tweet_total_retweets", "")
-    tweet_total_likes = request.forms.get("tweet_total_likes", "")
-    tweet_total_views = request.forms.get("tweet_total_views", "")
+    tweet_total_comments = request.forms.get("tweet_total_comments", 0)
+    tweet_total_retweets = request.forms.get("tweet_total_retweets", 0)
+    tweet_total_likes = request.forms.get("tweet_total_likes", 0)
+    tweet_total_views = request.forms.get("tweet_total_views", 0)
 
     tweet = {
-    "tweet_id" : tweet_id,
-    "tweet_message" : tweet_message,
-    "tweet_image" : tweet_image,
-    "tweet_created_at" : tweet_created_at,
-    "tweet_user_fk" : tweet_user_fk,
-    "tweet_total_comments" : tweet_total_comments,
-    "tweet_total_retweets" : tweet_total_retweets,
-    "tweet_total_likes" : tweet_total_likes,
-    "tweet_total_views" : tweet_total_views
+      "tweet_id" : tweet_id,
+      "tweet_message" : tweet_message,
+      "tweet_image" : tweet_image,
+      "tweet_created_at" : tweet_created_at,
+      "tweet_user_fk" : tweet_user_fk,
+      "tweet_total_comments" : tweet_total_comments,
+      "tweet_total_retweets" : tweet_total_retweets,
+      "tweet_total_likes" : tweet_total_likes,
+      "tweet_total_views" : tweet_total_views
     }
 
     values = ""
