@@ -13,10 +13,6 @@ def _(username):
       response.set_header("Location", "/")
       response.status = 302
       return response.body
-    
-    if user_cookie:
-      user.pop("user_password")
-      user_cookie = user
 
     users = db.execute("SELECT * FROM users").fetchall()
     profile_tweets = db.execute("SELECT * from users_and_tweets WHERE user_name = ? ORDER BY tweet_created_at DESC", (username,)).fetchall()
