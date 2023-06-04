@@ -13,10 +13,6 @@ def _(username):
       response.set_header("Location", "/")
       response.status = 302
       return response.body
-    if user_cookie["user_name"] == user["user_name"]:
-      user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
-      user.pop("user_password")
-      user_cookie = user
     print("WWWWWWW", user)
     print("WWWWWWW", user["user_avatar"])
     users = db.execute("SELECT * FROM users").fetchall()
@@ -25,8 +21,8 @@ def _(username):
     users_and_tweets = db.execute("SELECT * FROM users_and_tweets").fetchall()
     trends = db.execute("SELECT * FROM trends").fetchall()
 
-    if user_cookie:
-      print("Logged in user", user_cookie)
+    if user_cookie["user_name"] == user["user_name"]:
+      user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
       users = db.execute("SELECT * FROM users WHERE user_id !=?", (user_cookie["user_id"],)).fetchall()
       following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
       print("who the logged in user follows", following)
