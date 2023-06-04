@@ -13,7 +13,7 @@ def _(username):
       response.set_header("Location", "/")
       response.status = 302
       return response.body
-    if user_cookie:
+    if user_cookie["user_name"] == user["user_name"]:
       user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
       user.pop("user_password")
       user_cookie = user
