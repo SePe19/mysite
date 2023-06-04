@@ -20,6 +20,7 @@ def _(username):
     trends = db.execute("SELECT * FROM trends").fetchall()
     if user_cookie:
       users = db.execute("SELECT * FROM users WHERE user_name !=?", (user_cookie["user_name"])).fetchall()
+      print("HOWDYQ",users)
       following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
       return template("profile", title="Profile Page", user_cookie=user_cookie, user=user, users=users, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends, following=following)
 
