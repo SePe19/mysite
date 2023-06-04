@@ -41,6 +41,7 @@ def index():
         tweets = db.execute("SELECT * FROM tweets").fetchall()
         trends = db.execute("SELECT * FROM trends").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
+        # likes = db.execute("SELECT * FROM likes").fetchall()
         
         user_cookie = dbconnection.user()
         users_and_tweets = db.execute("SELECT * FROM users_and_tweets ORDER BY tweet_created_at DESC").fetchall()
