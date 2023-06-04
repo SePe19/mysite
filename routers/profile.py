@@ -13,16 +13,15 @@ def _(username):
       response.set_header("Location", "/")
       response.status = 302
       return response.body
-    print("BREKFAST", user_cookie)
     users = db.execute("SELECT * FROM users").fetchall()
     profile_tweets = db.execute("SELECT * from users_and_tweets WHERE user_name = ? ORDER BY tweet_created_at DESC", (username,)).fetchall()
     profile_tweets_images = db.execute("SELECT tweet_image FROM users_and_tweets WHERE user_name=? AND tweet_image != '' ORDER BY tweet_created_at DESC LIMIT 6", (username,)).fetchall()
     users_and_tweets = db.execute("SELECT * FROM users_and_tweets").fetchall()
     trends = db.execute("SELECT * FROM trends").fetchall()
-
+    if user_cookie:
+      following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
     if user_cookie["user_name"] == user["user_name"]:
       user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
-      following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
       return template("profile", title="Profile Page", user_cookie=user_cookie, user=user, users=users, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends, following=following)
 
     return template("profile", title="Profile Page", user=user, users=users, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends)
