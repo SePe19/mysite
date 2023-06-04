@@ -64,6 +64,7 @@ async function getFollowerCount() {
 
         const data = await clonedResponse.json();
 
+        console.log(data.followers)
         if (clonedResponse.ok) {
             console.log(data.followers)
             console.log(parseTwitterNumber(data.followers))
