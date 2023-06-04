@@ -20,14 +20,13 @@ def _(username):
     users_and_tweets = db.execute("SELECT * FROM users_and_tweets").fetchall()
     trends = db.execute("SELECT * FROM trends").fetchall()
 
-    if get('user_cookie'):
-      if user_cookie["user_name"] == user["user_name"]:
-        user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
-        user.pop("user_password")
-        user_cookie = user
-        following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
-        print("who the logged in user follows", following)
-        return template("profile", title="Profile Page", user_cookie=user_cookie, user=user, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends, following=following)
+    if user_cookie["user_name"] == user["user_name"]:
+      user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
+      user.pop("user_password")
+      user_cookie = user
+      following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
+      print("who the logged in user follows", following)
+      return template("profile", title="Profile Page", user_cookie=user_cookie, user=user, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends, following=following)
 
     return template("profile", title="Profile Page", user=user, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends)
   
