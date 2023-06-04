@@ -48,11 +48,11 @@ def index():
         if user_cookie is None:
             return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets)
         if user_cookie:
+            users = db.execute("SELECT * FROM users WHERE user_id !=?", (user_cookie["user_id"],)).fetchall()
             user = db.execute("SELECT * FROM users WHERE user_name = ?", (user_cookie["user_name"],)).fetchone()
             if user:
                 user.pop("user_password")
                 user_cookie = user
-        users = db.execute("SELECT * FROM users WHERE user_id !=?", (user_cookie["user_id"],)).fetchall()
         following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
         return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets, following=following, user_cookie=user_cookie)
     except Exception as ex:
