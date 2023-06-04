@@ -65,9 +65,9 @@ async function getFollowerCount() {
         const data = await clonedResponse.json();
 
         if (clonedResponse.ok) {
-        return data.followers;
+            return parseTwitterNumber(data.followers);
         } else {
-        throw new Error("Error fetching follower count: Invalid response");
+            throw new Error("Error fetching follower count: Invalid response");
         }
     } catch (error) {
         console.error("Error fetching follower count:", error);
@@ -87,7 +87,7 @@ async function getFollowingCount() {
         const data = await clonedResponse.json();
 
         if (clonedResponse.ok) {
-        return data.following;
+        return parseTwitterNumber(data.following);
         } else {
         throw new Error("Error fetching following count: Invalid response");
         }
