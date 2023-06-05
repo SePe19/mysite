@@ -25,7 +25,7 @@ def send_reset_email():
         return {"info reset":"Succesfully sent reset password email"}
     except Exception as ex:
         print("reset", ex)
-        return ex
+        return {"Error reset": ex}
     finally:
         if "db" in locals(): db.close()
 
