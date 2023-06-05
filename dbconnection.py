@@ -108,7 +108,7 @@ def validate_confirm_password():
   confirm_password = confirm_password.strip()
   if confirm_password != password:
     response.status = 400 
-    raise Exception({"Error dbconnection": error})
+    raise Exception(error)
   return confirm_password
 
 ##############################

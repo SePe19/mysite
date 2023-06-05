@@ -38,7 +38,13 @@
                     <p id="bottomResetPassword" onclick="showResetPassword()" class="text-twitter-blue hover:underline cursor-pointer">Reset password</p>
                 </div>
                 <input id="passwordInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="password" placeholder="New password" onkeydown="resetSubmit(event)">
+                <div id="errorMessagePassword" class="hidden items-center rounded-full p-2 mt-2 max-h-fit max-w-80 bg-red">
+                    <span class="text-white text-17 font-bold">Your password must be between 10 to 128 characters long</span>
+                </div>
                 <input id="confirmPasswordInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="password" placeholder="Confirm password" onkeydown="resetSubmit(event)">
+                <div id="errorMessageConfirmPassword" class="hidden items-center rounded-full p-2 mt-2 max-h-fit max-w-80 bg-red">
+                    <span class="text-white text-17 font-bold">The passwords do not match</span>
+                </div>
                 <input id="emailInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="email" placeholder="Email" onkeydown="resetSubmit(event)">
                 <button id="resetEmailButton" onclick="resetPassword()" class="hidden bg-twitter-blue text-white rounded-full px-6 py-2 font-semibold w-80 mt-4 hover:bg-opacity-90" type="submit">Send reset email</button>
             </div>
@@ -113,18 +119,24 @@
         formData.append('password', password);
         formData.append('confirm_password', confirmPassword);
         formData.append('email', email);
-
-        // const errorMessageUsername = document.getElementById("errorMessageUsername")
-        // errorMessageUsername.classList.remove("hidden")
-        // errorMessageUsername.classList.add("flex")
-        const response = await fetch("/reset-password", {
+        const regex = /^[a-z0-9]{10,128}$/
+        if (!regex.test(password)) {
+            const errorMessagePassword = document.getElementById("errorMessagePassword")
+            errorMessagePassword.classList.remove("hidden")
+            errorMessagePassword.classList.add("flex")
+        } else if (password != confirmPassword) {
+            const errorMessageConfirmPassword = document.getElementById("errorMessageConfirmPassword")
+            errorMessageConfirmPassword.classList.remove("hidden")
+            errorMessageConfirmPassword.classList.add("flex")
+        } else {
+            const response = await fetch("/reset-password", {
             method: "POST", 
             body: formData
-        })
-
-        const data = await response.json()
-
-        console.log(data)
+            })
+            const data = await response.json()
+            console.log(data)
+            closeResetModal()
+        }
     }
 </script>
 </body>
