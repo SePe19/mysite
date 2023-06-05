@@ -18,10 +18,8 @@ def send_reset_email():
         user_password = bcrypt.hashpw(dbconnection.validate_password().encode("utf-8"), salt)
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
-            print("HELLO FROM THE OTHER SIDE3")
             user_active = 0
-            user_deactive = db.execute("UPDATE users SET user_password = ?, user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
-            print("DANGERDANGER",user_deactive)
+            db.execute("UPDATE users SET user_password = ?, user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
             db.commit()
             email_verification(user_email, user["user_name"])
         return {"info reset":"Succesfully sent reset password email"}

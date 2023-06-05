@@ -109,19 +109,22 @@
         const password = passwordInput.value
         const confirmPassword = confirmPasswordInput.value
         const email = emailInput.value
-        console.log(password, confirmPassword, email)
         const formData = new FormData();
         formData.append('password', password);
         formData.append('confirm_password', confirmPassword);
         formData.append('email', email);
 
+        const errorMessageUsername = document.getElementById("errorMessageUsername")
+        errorMessageUsername.classList.remove("hidden")
+        errorMessageUsername.classList.add("flex")
         const response = await fetch("/reset-password", {
             method: "POST", 
             body: formData
         })
 
         const data = await response.json()
-        console.log("EMIIIIIIIIL", data)
+
+        console.log(data)
     }
 </script>
 </body>
