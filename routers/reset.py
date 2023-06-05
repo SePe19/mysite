@@ -14,6 +14,7 @@ def send_reset_email():
         db = dbconnection.db()
         user_email = request.forms.get("email")
         salt = bcrypt.gensalt()
+        dbconnection.validate_confirm_password()
         user_password = bcrypt.hashpw(dbconnection.validate_password().encode("utf-8"), salt)
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
