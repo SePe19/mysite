@@ -45,7 +45,7 @@
                 <div id="errorMessageConfirmPassword" class="hidden items-center rounded-md p-2 mt-2 max-h-fit max-w-80 bg-red">
                     <span class="text-white text-17 font-bold">The passwords do not match</span>
                 </div>
-                <input id="emailInput" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="email" placeholder="Email" onkeydown="resetSubmit(event)">
+                <input id="emailInput" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="hidden login-enter rounded-md bg-transparent invalid:border-[#F4212E] text-white text-17 placeholder-twitter-grey outline-none group border border-twitter-line focus:border-twitter-blue py-4 p-2 mt-4 w-80" type="email" placeholder="Email" onkeydown="resetSubmit(event)">
                 <div id="errorMessageEmail" class="hidden items-center rounded-md p-2 mt-2 max-h-fit max-w-80 bg-red">
                     <span class="text-white text-17 font-bold">Email is not valid</span>
                 </div>
