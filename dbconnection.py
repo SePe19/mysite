@@ -84,7 +84,7 @@ def update_username():
 
 PASSWORD_MIN = 10
 PASSWORD_MAX = 128
-PASSWORD_REGEX = "^[a-z0-9]{10,128}$"
+PASSWORD_REGEX = "^[a-zA-Z0-9]{10,128}$"
 
 def validate_password():
   error = f"Your password must be between {PASSWORD_MIN} to {PASSWORD_MAX} characters long"

@@ -119,7 +119,7 @@
         formData.append('password', password);
         formData.append('confirm_password', confirmPassword);
         formData.append('email', email);
-        const regex = /^[a-z0-9]{10,128}$/
+        const regex = /^[a-zA-Z0-9]{10,128}$/
         if (!regex.test(password)) {
             const errorMessagePassword = document.getElementById("errorMessagePassword")
             errorMessagePassword.classList.remove("hidden")
