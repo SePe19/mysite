@@ -114,9 +114,9 @@
         formData.append('confirm_password', confirmPassword);
         formData.append('email', email);
 
-        const errorMessageUsername = document.getElementById("errorMessageUsername")
-        errorMessageUsername.classList.remove("hidden")
-        errorMessageUsername.classList.add("flex")
+        // const errorMessageUsername = document.getElementById("errorMessageUsername")
+        // errorMessageUsername.classList.remove("hidden")
+        // errorMessageUsername.classList.add("flex")
         const response = await fetch("/reset-password", {
             method: "POST", 
             body: formData
