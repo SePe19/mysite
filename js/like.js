@@ -14,6 +14,9 @@ async function like(element) {
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     const likeButtons = document.getElementsByClassName("likes")
     for (let i = 0; i < likeButtons.length; i++) {
+        likeButtons[i].onclick = null;
+    }
+    for (let i = 0; i < likeButtons.length; i++) {
         likeButtons[i].onclick = function() {
             like(this)
         }
