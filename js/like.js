@@ -15,6 +15,7 @@ async function like(element) {
     const likeButtons = document.getElementsByClassName("like")
     for (let i = 0; i < likeButtons.length; i++) {
         if (likeButtons[i].value == tweet_id) {
+            console.log(likeButtons[i].classList)
             likeButtons[i].classList.remove("liked-tweet")
             likeButtons[i].classList.add("not-liked-tweet")
             likeButtons[i].onclick = function() {
