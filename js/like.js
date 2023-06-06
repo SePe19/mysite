@@ -23,7 +23,7 @@ async function like(element) {
             like(element)
         }
         if (likeButtons[i].querySelector(".liked-tweet").value) {
-            like(element)
+            unlike(element)
             likedTweet.classList.remove("liked-tweet")
             likedTweet.classList.add("not-liked-tweet")
         }
