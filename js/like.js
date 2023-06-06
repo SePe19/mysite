@@ -8,7 +8,7 @@ async function like(element) {
         body: formData
     })
     const data = await response.json()
-    const likesCountElement = document.querySelector("span[name='like_count']")
+    const likesCountElement = document.querySelector(".like-count-" + tweet_id);
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     const likeButtons = document.getElementsByClassName("likes")
