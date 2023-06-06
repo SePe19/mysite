@@ -1,5 +1,5 @@
 async function like(element) {
-    console.log("ELEMENT", element);
+    console.log("ELEMENT", element.getAttribute("value"))
     console.log("ELEMENT type", typeof element);
     console.log("ELEMENT instanceof Element", element instanceof Element);
     console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
@@ -24,7 +24,7 @@ async function like(element) {
     }
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
     const likesCount = await getLikeCount(tweet_id)
-    likesCountElement.textContent = parseTwitterNumber(likesCount)
+    likesCountElement.innerHTML = parseTwitterNumber(likesCount)
 }
 
 async function unlike(element) {
