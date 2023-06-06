@@ -22,7 +22,7 @@ async function like(element) {
         likedElement.setAttribute("name", "not_liked_tweet")
     } else {
         notLikedElement.classList.remove("text-twitter-grey")
-        notLikedElement.classList.add("text-red")
+        notLikedElement.classList.add("text-twitter-red")
         notLikedElement.setAttribute("name", "liked_tweet");
     }
     console.log("likedElement:", likedElement)
