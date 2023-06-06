@@ -1,6 +1,8 @@
 async function like(element) {
-    let tweet_id = element.getAttribute("value")
-    console.log("VALUE", tweet_id)
+    const user_id = element.getAttribute("value")
+    console.log("USER", user_id)
+    const tweet_id = element.querySelector("input[name='tweet_id_likes']")
+    console.log("TWEET", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
     const response = await fetch("/like", {
@@ -11,12 +13,12 @@ async function like(element) {
     console.log(data)
     const likeButtons = document.getElementsByClassName("like")
     for (let i = 0; i < likeButtons.length; i++) {
-        if (likeButtons[i].value == tweet_id) {
+        if (likeButtons[i].value == user_id) {
             console.log(likeButtons[i].classList)
             likeButtons[i].classList.remove("liked-tweet")
             likeButtons[i].classList.add("not-liked-tweet")
             likeButtons[i].onclick = function() {
-                unlike(this)
+                unlike(element)
             }
         }
     }
@@ -44,7 +46,7 @@ async function unlike(element) {
             likeButtons[i].classList.remove("not-liked-tweet")
             likeButtons[i].classList.add("liked-tweet")
             likeButtons[i].onclick = function() {
-                like(this)
+                like(element)
             }
         }
     }
