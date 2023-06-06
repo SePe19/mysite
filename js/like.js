@@ -24,7 +24,7 @@ async function like(element) {
     }
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
     const likesCount = await getLikeCount(tweet_id)
-    likesCountElement.innerHTML = parseTwitterNumber(likesCount)
+    likesCountElement.innerText = parseTwitterNumber(likesCount)
 }
 
 async function unlike(element) {
