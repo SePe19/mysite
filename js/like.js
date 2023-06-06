@@ -13,6 +13,8 @@ async function like(element) {
     })
     const data = await response.json()
     const likeButtons = document.getElementsByClassName("like")
+    console.log("LIKEBUTTONS",likeButtons)
+    console.log("FIRSTBUTTON value",likeButtons[0].value)
     for (let i = 0; i < likeButtons.length; i++) {
         if (likeButtons[i].value == tweet_id) {
             console.log(likeButtons[i].classList)
