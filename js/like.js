@@ -22,6 +22,8 @@ async function like(element) {
     console.log(likesElement.classList)
 
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
+    likesCountElement.classList.remove("liked-tweet")
+    likesCountElement.classList.add("not-liked-tweet")
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
 }
@@ -50,6 +52,8 @@ async function unlike(element) {
     console.log(likesElement.classList)
 
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
+    likesCountElement.classList.remove("not-liked-tweet")
+    likesCountElement.classList.add("liked-tweet")
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
 }
