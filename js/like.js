@@ -29,7 +29,7 @@ async function like(element) {
     }
     console.log("likedElement:", likedElement)
     console.log("notLikedElement:", notLikedElement)
-    console.log(likesCountElement.innerHTML)
+    console.log("32", likesCountElement.innerHTML)
 }
 
 async function getLikeCount(tweet_id) {
