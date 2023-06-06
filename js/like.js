@@ -40,7 +40,7 @@ async function getLikeCount(tweet_id) {
         const data = await clonedResponse.json();
 
         if (clonedResponse.ok) {
-            console.log(data.likes, data)
+            console.log("DATA.LIKES:", data.likes, data)
             return data.likes;
         } else {
             throw new Error("Error fetching likes count: Invalid response");
