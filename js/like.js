@@ -30,6 +30,10 @@ async function like(element) {
     console.log("likedElement:", likedElement)
     console.log("notLikedElement:", notLikedElement)
     console.log("32", likesCountElement.innerHTML)
+    
+    console.log("34", likesCountElement.value)
+    likesCountElement.value = parseTwitterNumber(likesCount)
+    console.log("36", likesCountElement.value)
 }
 
 async function getLikeCount(tweet_id) {
