@@ -6,17 +6,13 @@ def like():
     try:
         db = dbconnection.db()
         user_cookie = dbconnection.user()
-        # likes_user_fk = user_cookie["user_id"]
-        # likes_user_fk = request.forms.get("user_id", "")
         likes_user_fk = user_cookie["user_id"]
         likes_tweet_fk = request.forms.get("tweet_id", "")
         like = {
             "likes_user_fk" : likes_user_fk,
             "likes_tweet_fk" : likes_tweet_fk
         }
-        print("17", likes_user_fk, likes_tweet_fk)
         likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ? AND likes_tweet_fk = ?", (likes_user_fk, likes_tweet_fk,)).fetchone()
-        print("19", likes)
         if likes:
             db.execute("DELETE FROM likes WHERE likes_user_fk = ? AND likes_tweet_fk = ?", (likes_user_fk, likes_tweet_fk,))
         else:
