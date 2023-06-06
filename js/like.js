@@ -1,6 +1,6 @@
 async function like(element) {
     console.log(element, element.value)
-    const tweet_id = element.querySelector("input[name='tweet_id_likes']");
+    let tweet_id = element.querySelector("input[name='tweet_id_likes']");
     tweet_id = tweet_id.value
     console.log(tweet_id)
     const formData = new FormData()
