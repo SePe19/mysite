@@ -13,9 +13,9 @@ async function like(element) {
     })
     const data = await response.json()
     const likeButtons = document.getElementsByClassName("like")
-    console.log("LIKEBUTTONS",likeButtons)
+    const likeButton1 = likeButtons.querySelectorAll("input[name='tweet_id_likes']")
+    console.log(likeButton1, likeButton1.value)
     for (let i = 0; i < likeButtons.length; i++) {
-        console.log("value from button:", i, likeButtons[i].value)
         if (likeButtons[i].value == tweet_id) {
             console.log(likeButtons[i].classList)
             likeButtons[i].classList.remove("liked-tweet")
