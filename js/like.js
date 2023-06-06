@@ -14,7 +14,7 @@ async function like(element) {
     console.log(likesCount)
     console.log(likesCountElement.innerHTML)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
-    const likeElement = element.querySelector("liked_tweet")
+    const likeElement = element.querySelector("div[name='liked_tweet']")
     console.log("likeElement:", likeElement)
     console.log(likesCountElement.innerHTML)
 }
