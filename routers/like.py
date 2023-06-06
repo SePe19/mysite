@@ -5,9 +5,10 @@ import dbconnection
 def like():
     try:
         db = dbconnection.db()
-        # user_cookie = dbconnection.user()
+        user_cookie = dbconnection.user()
         # likes_user_fk = user_cookie["user_id"]
-        likes_user_fk = request.forms.get("user_id", "")
+        # likes_user_fk = request.forms.get("user_id", "")
+        likes_user_fk = user_cookie
         likes_tweet_fk = request.forms.get("tweet_id", "")
         like = {
             "likes_user_fk" : likes_user_fk,

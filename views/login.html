@@ -132,7 +132,7 @@
             const errorMessageConfirmPassword = document.getElementById("errorMessageConfirmPassword")
             errorMessageConfirmPassword.classList.remove("hidden")
             errorMessageConfirmPassword.classList.add("flex")
-        }  else if (!emailRegex(email)) {
+        }  else if (!emailRegex.test(email)) {
             const errorMessageEmail = document.getElementById("errorMessageEmail")
             errorMessageEmail.classList.remove("hidden")
             errorMessageEmail.classList.add("flex")
