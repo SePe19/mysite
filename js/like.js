@@ -13,6 +13,8 @@ async function like(element) {
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     const likeButtons = document.getElementsByClassName("likes")
+    const likedTweet = document.querySelector(".liked-tweet")
+    const notLikedTweet = document.querySelector(".not-liked-tweet")
     for (let i = 0; i < likeButtons.length; i++) {
         likeButtons[i].onclick = function() {
             console.log("THIS", this)
@@ -20,12 +22,12 @@ async function like(element) {
         }
         if (likeButtons[i].querySelector(".liked-tweet").value) {
             like(this)
-            likeButtons[i].classList.remove("liked-tweet")
-            likeButtons[i].classList.add("not-liked-tweet")
+            likedTweet.classList.remove("liked-tweet")
+            likedTweet.classList.add("not-liked-tweet")
         } else {
             like(this)
-            likeButtons[i].classList.remove("not-liked-tweet")
-            likeButtons[i].classList.add("liked-tweet")
+            notLikedTweet.classList.remove("not-liked-tweet")
+            notLikedTweet.classList.add("liked-tweet")
         }
     }
 }
