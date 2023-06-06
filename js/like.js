@@ -20,15 +20,15 @@ async function like(element) {
     const notLikedTweet = document.querySelector(".not-liked-tweet")
     for (let i = 0; i < likeButtons.length; i++) {
         likeButtons[i].onclick = function() {
-            console.log("THIS", this)
-            like(this)
+            console.log("THIS", element)
+            like(element)
         }
         if (likeButtons[i].querySelector(".liked-tweet").value) {
-            like(this)
+            like(element)
             likedTweet.classList.remove("liked-tweet")
             likedTweet.classList.add("not-liked-tweet")
         } else {
-            like(this)
+            like(element)
             notLikedTweet.classList.remove("not-liked-tweet")
             notLikedTweet.classList.add("liked-tweet")
         }
