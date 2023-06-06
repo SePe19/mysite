@@ -1,6 +1,8 @@
 async function like(element) {
-    console.log("ELEMENT", element)
-    console.log("TYPE", typeof element)
+    console.log("ELEMENT", element);
+    console.log("ELEMENT type", typeof element);
+    console.log("ELEMENT instanceof Element", element instanceof Element);
+    console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
     let tweet_id = element.querySelector("input[name='tweet_id_likes']").value
     console.log("VALUE", tweet_id)
     const formData = new FormData()
