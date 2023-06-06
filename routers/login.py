@@ -8,19 +8,12 @@ import bcrypt
 def _():
     try:
       load_dotenv('.env')
-      #user = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
-      #print("Cookie values ", user)
-      #if user: return {"info": "Login succesful!", "Welcome": user["username"]}
 
       username = dbconnection.validate_username()
-      password = request.forms.get("password")
+      password = dbconnection.validate_password()
 
       db = dbconnection.db()
       user = db.execute("SELECT * FROM users WHERE user_name = ? LIMIT 1", (username,)).fetchone()
-      print("What is in user? ", user)
-      
-      print(password)
-      print(user["user_password"])
 
       if not user: 
         response.status = 400
