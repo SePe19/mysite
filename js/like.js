@@ -3,7 +3,7 @@ async function like(element) {
     console.log("ELEMENT type", typeof element);
     console.log("ELEMENT instanceof Element", element instanceof Element);
     console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
-    let tweet_id = element.querySelector("input[name='tweet_id_likes']").value
+    let tweet_id = element.value
     console.log("VALUE", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
@@ -12,22 +12,19 @@ async function like(element) {
         body: formData
     })
     const data = await response.json()
+    const likeButtons = document.getElementsByClassName("like")
+    for (let i = 0; i < likeButtons.length; i++) {
+        if (likeButtons[i].value == tweet_id) {
+            likeButtons[i].classList.remove("liked-tweet")
+            likeButtons[i].classList.add("not-liked-tweet")
+            likeButtons[i].onclick = function() {
+                unlike(this)
+            }
+        }
+    }
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
-    const likeButtons = document.getElementsByClassName("likes")
-    const likedTweet = document.querySelector(".liked-tweet")
-    for (let i = 0; i < likeButtons.length; i++) {
-        likeButtons[i].onclick = function() {
-            console.log("THIS", element)
-            like(element)
-        }
-        if (likeButtons[i].querySelector(".liked-tweet").value) {
-            unlike(element)
-            likedTweet.classList.remove("liked-tweet")
-            likedTweet.classList.add("not-liked-tweet")
-        }
-    }
 }
 
 async function unlike(element) {
@@ -35,7 +32,7 @@ async function unlike(element) {
     console.log("ELEMENT type", typeof element);
     console.log("ELEMENT instanceof Element", element instanceof Element);
     console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
-    let tweet_id = element.querySelector("input[name='tweet_id_likes']").value
+    let tweet_id = element.value
     console.log("VALUE", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
@@ -44,22 +41,19 @@ async function unlike(element) {
         body: formData
     })
     const data = await response.json()
+    const likeButtons = document.getElementsByClassName("like")
+    for (let i = 0; i < likeButtons.length; i++) {
+        if (likeButtons[i].value == tweet_id) {
+            likeButtons[i].classList.remove("not-liked-tweet")
+            likeButtons[i].classList.add("liked-tweet")
+            likeButtons[i].onclick = function() {
+                like(this)
+            }
+        }
+    }
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
-    const likeButtons = document.getElementsByClassName("likes")
-    const notLikedTweet = document.querySelector(".not-liked-tweet")
-    for (let i = 0; i < likeButtons.length; i++) {
-        likeButtons[i].onclick = function() {
-            console.log("THIS", element)
-            like(element)
-        }
-        if (!likeButtons[i].querySelector(".liked-tweet").value) {
-            like(element)
-            notLikedTweet.classList.remove("not-liked-tweet")
-            notLikedTweet.classList.add("liked-tweet")
-        }
-    }
 }
 
 async function getLikeCount(tweet_id) {
