@@ -10,16 +10,15 @@ async function like(element) {
     const data = await response.json()
     console.log("COOK",data)
     const likesCountElement = document.querySelector("span[name='like_count']")
-    const likesCount = await getLikeCount()
+    const likesCount = await getLikeCount(tweet_id)
     console.log(likesCount)
     console.log(likesCountElement.innerHTML)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     console.log(likesCountElement.innerHTML)
 }
 
-async function getLikeCount() {
+async function getLikeCount(tweet_id) {
     try {
-        const tweet_id = document.querySelector("input[name='tweet_id_likes']").value
         const response = await fetch(`/${tweet_id}/likes`);
         const clonedResponse = response.clone();
 
