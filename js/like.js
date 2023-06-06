@@ -14,8 +14,19 @@ async function like(element) {
     console.log(likesCount)
     console.log(likesCountElement.innerHTML)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
-    const likeElement = element.querySelector("div[name='liked_tweet']")
-    console.log("likeElement:", likeElement)
+    const likedElement = element.querySelector("div[name='liked_tweet']")
+    const notLikedElement = element.querySelector("div[name='not_liked_tweet']")
+    console.log("likedElement:", likedElement)
+    console.log("notLikedElement:", notLikedElement)
+    if (likedElement) {
+        likedElement.classList.remove("text-twitter-red")
+        likedElement.classList.add("text-twitter-grey")
+    } else {
+        notLikedElement.classList.remove("text-twitter-grey")
+        notLikedElement.classList.add("text-twitter-red")
+    }
+    console.log("likedElement:", likedElement)
+    console.log("notLikedElement:", notLikedElement)
     console.log(likesCountElement.innerHTML)
 }
 
