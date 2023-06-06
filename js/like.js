@@ -15,6 +15,7 @@ async function like(element) {
     const likeButtons = document.getElementsByClassName("likes")
     for (let i = 0; i < likeButtons.length; i++) {
         likeButtons[i].onclick = function() {
+            console.log("THIS", this)
             like(this)
         }
     }
