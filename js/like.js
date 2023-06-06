@@ -1,8 +1,6 @@
 async function like(element) {
     const user_id = element.querySelector("input[name='user_id']").value
-    console.log("USER", user_id)
     const tweet_id = element.querySelector("input[name='tweet_id_likes']").value
-    console.log("TWEET", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
     const response = await fetch("/like", {
@@ -10,29 +8,26 @@ async function like(element) {
         body: formData
     })
     const data = await response.json()
-    console.log(data)
     
     const likesElement = document.querySelector(".likes-tweet-id-" + tweet_id)
-    console.log(likesElement)
     likesElement.classList.remove("liked-tweet")
     likesElement.classList.add("not-liked-tweet")
     likesElement.onclick = function() {
         like(element)
     }
-    console.log(likesElement.classList)
-
+    console.log("LIKE CLASSLIST", likesElement.classList)
+    
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
     likesCountElement.classList.remove("liked-tweet")
     likesCountElement.classList.add("not-liked-tweet")
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
+    console.log("LIKE COUNT CLASSLIST", likesCountElement.classList)
 }
 
 async function unlike(element) {
     const user_id = element.querySelector("input[name='user_id']").value
-    console.log("USER", user_id)
     const tweet_id = element.querySelector("input[name='tweet_id_likes']").value
-    console.log("TWEET", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
     const response = await fetch("/like", {
@@ -40,22 +35,21 @@ async function unlike(element) {
         body: formData
     })
     const data = await response.json()
-    console.log(data)
-
+    
     const likesElement = document.querySelector(".likes-tweet-id-" + tweet_id)
-    console.log(likesElement)
     likesElement.classList.remove("not-liked-tweet")
     likesElement.classList.add("liked-tweet")
     likesElement.onclick = function() {
         like(element)
     }
-    console.log(likesElement.classList)
-
+    console.log("UNLIKE CLASSLIST", likesElement.classList)
+    
     const likesCountElement = document.querySelector(".like-count-" + tweet_id)
     likesCountElement.classList.remove("not-liked-tweet")
     likesCountElement.classList.add("liked-tweet")
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
+    console.log("UNLIKE COUNT CLASSLIST", likesCountElement.classList)
 }
 
 async function getLikeCount(tweet_id) {
