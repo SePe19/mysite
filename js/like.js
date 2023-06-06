@@ -1,9 +1,9 @@
 async function like(element) {
-    console.log("ELEMENT", element.getAttribute("value"))
+    console.log("ELEMENT", element)
     console.log("ELEMENT type", typeof element);
     console.log("ELEMENT instanceof Element", element instanceof Element);
     console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
-    let tweet_id = element.value
+    let tweet_id = element.getAttribute("value")
     console.log("VALUE", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
