@@ -11,8 +11,6 @@ async function like(element) {
     console.log("COOK",data)
     const likesCountElement = document.querySelector("span[name='like_count']")
     const likesCount = await getLikeCount(tweet_id)
-    console.log(likesCount)
-    console.log(likesCountElement.innerHTML)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     const likedElement = element.querySelector("div[name='liked_tweet']")
     const notLikedElement = element.querySelector("div[name='not_liked_tweet']")
@@ -24,7 +22,7 @@ async function like(element) {
         likedElement.setAttribute("name", "not_liked_tweet")
     } else {
         notLikedElement.classList.remove("text-twitter-grey")
-        notLikedElement.classList.add("text-twitter-red")
+        notLikedElement.classList.add("text-red")
         notLikedElement.setAttribute("name", "liked_tweet");
     }
     console.log("likedElement:", likedElement)
