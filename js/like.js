@@ -13,6 +13,7 @@ async function like(element) {
     console.log(data)
     
     const likesElement = document.querySelector(".likes-tweet-id-" + tweet_id)
+    console.log(likesElement)
     likesElement.classList.remove("liked-tweet")
     likesElement.classList.add("not-liked-tweet")
     likesElement.onclick = function() {
@@ -40,6 +41,7 @@ async function unlike(element) {
     console.log(data)
 
     const likesElement = document.querySelector(".likes-tweet-id-" + tweet_id)
+    console.log(likesElement)
     likesElement.classList.remove("not-liked-tweet")
     likesElement.classList.add("liked-tweet")
     likesElement.onclick = function() {
