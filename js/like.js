@@ -1,5 +1,5 @@
 async function like(element) {
-    console.log("ELEMENT", element.value);
+    console.log("ELEMENT", element);
     console.log("ELEMENT type", typeof element);
     console.log("ELEMENT instanceof Element", element instanceof Element);
     console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
