@@ -1,6 +1,5 @@
 async function like(element) {
     let tweet_id = element.querySelector("input[name='tweet_id_likes']").value;
-    console.log(tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
     const response = await fetch("/like", {
@@ -8,29 +7,18 @@ async function like(element) {
         body: formData
     })
     const data = await response.json()
-    console.log("COOK",data)
     const likesCountElement = document.querySelector("span[name='like_count']")
     const likesCount = await getLikeCount(tweet_id)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
-    const likedElement = element.querySelector("div[name='liked_tweet']")
-    const notLikedElement = element.querySelector("div[name='not_liked_tweet']")
-    const likesDiv = document.querySelector("div[name='likes_div']")
-    console.log("likedElement:", likedElement)
-    console.log("notLikedElement:", notLikedElement)
+    const likedElement = element.querySelector(".liked-tweet")
+    const notLikedElement = element.querySelector(".not-liked-tweet")
     if (likedElement) {
-        likedElement.classList.remove("text-twitter-red")
-        likedElement.classList.add("text-twitter-grey")
-        likedElement.setAttribute("name", "not_liked_tweet")
-        likesDiv.classList.remove("text-twitter-red")
+        likedElement.classList.remove("liked-tweet")
+        likedElement.classList.add("not-liked-tweet")
     } else {
-        notLikedElement.classList.remove("text-twitter-grey")
-        notLikedElement.classList.add("text-twitter-red")
-        notLikedElement.setAttribute("name", "liked_tweet")
-        likesDiv.classList.add("text-twitter-red")
+        notLikedElement.classList.remove("not-liked-tweet")
+        notLikedElement.classList.add("liked-tweet")
     }
-    console.log("likedElement:", likedElement)
-    console.log("notLikedElement:", notLikedElement)
-    console.log("32", likesCountElement.innerHTML)
 }
 
 async function getLikeCount(tweet_id) {
