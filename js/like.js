@@ -1,7 +1,5 @@
 async function like(element) {
-    console.log(element, element.value)
-    let tweet_id = element.querySelector("input[name='tweet_id_likes']");
-    tweet_id = tweet_id.value
+    let tweet_id = element.querySelector("input[name='tweet_id_likes']").value;
     console.log(tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
@@ -13,6 +11,7 @@ async function like(element) {
     console.log("COOK",data)
     const likesCountElement = document.querySelector("span[name='like_count']")
     const likesCount = await getLikeCount()
+    console.log(likesCount)
     console.log(likesCountElement.innerHTML)
     likesCountElement.innerHTML = parseTwitterNumber(likesCount)
     console.log(likesCountElement.innerHTML)
