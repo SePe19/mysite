@@ -54,6 +54,10 @@ def index():
                 user_cookie = user
         likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ?", (user_cookie["user_id"])).fetchall()
         print("LIKESHERE", likes)
+        likes = {
+            "likes_user_fk" : likes["likes_user_fk"],
+            "likes_tweet_fk" : likes["likes_tweet_fk"]
+        }
         following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
         return template("index", title="Twitter", tweets=tweets, trends=trends, users=users, users_and_tweets=users_and_tweets, following=following, user_cookie=user_cookie, likes=likes)
     except Exception as ex:
