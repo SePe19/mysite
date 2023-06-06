@@ -1,5 +1,5 @@
 async function like(tweet_id) {
-    console.log(tweet_id, tweet_id.value)
+    console.log(tweet_id, tweet_id.input.value)
     tweet_id = tweet_id.value
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
