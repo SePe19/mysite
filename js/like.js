@@ -18,6 +18,15 @@ async function like(element) {
             console.log("THIS", this)
             like(this)
         }
+        if (likeButtons[i].querySelector(".liked-tweet").value) {
+            like(this)
+            likeButtons[i].classList.remove("liked-tweet")
+            likeButtons[i].classList.add("not-liked-tweet")
+        } else {
+            like(this)
+            likeButtons[i].classList.remove("not-liked-tweet")
+            likeButtons[i].classList.add("liked-tweet")
+        }
     }
 }
 
