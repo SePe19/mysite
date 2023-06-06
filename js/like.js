@@ -1,7 +1,7 @@
 async function like(element) {
-    const user_id = element.getAttribute("value")
+    const user_id = element.querySelector("input[name='user_id']").value
     console.log("USER", user_id)
-    const tweet_id = element.querySelector("input[name='tweet_id_likes']")
+    const tweet_id = element.querySelector("input[name='tweet_id_likes']").value
     console.log("TWEET", tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
