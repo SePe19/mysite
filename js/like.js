@@ -1,8 +1,4 @@
 async function like(element) {
-    console.log("ELEMENT", element)
-    console.log("ELEMENT type", typeof element);
-    console.log("ELEMENT instanceof Element", element instanceof Element);
-    console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
     let tweet_id = element.getAttribute("value")
     console.log("VALUE", tweet_id)
     const formData = new FormData()
@@ -13,9 +9,9 @@ async function like(element) {
     })
     const data = await response.json()
     const likeButtons = document.getElementsByClassName("like")
-    const likeButton1 = likeButtons.querySelectorAll("input[name='tweet_id_likes']")
-    console.log(likeButton1, likeButton1.value)
+    console.log("LIKEBUTTONS",likeButtons)
     for (let i = 0; i < likeButtons.length; i++) {
+        console.log("value from button:", i, likeButtons[i].value)
         if (likeButtons[i].value == tweet_id) {
             console.log(likeButtons[i].classList)
             likeButtons[i].classList.remove("liked-tweet")
@@ -31,10 +27,6 @@ async function like(element) {
 }
 
 async function unlike(element) {
-    console.log("ELEMENT", element);
-    console.log("ELEMENT type", typeof element);
-    console.log("ELEMENT instanceof Element", element instanceof Element);
-    console.log("ELEMENT instanceof HTMLElement", element instanceof HTMLElement);
     let tweet_id = element.getAttribute("value")
     console.log("VALUE", tweet_id)
     const formData = new FormData()
