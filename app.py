@@ -52,7 +52,7 @@ def index():
             if user:
                 user.pop("user_password")
                 user_cookie = user
-        likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ?", (user_cookie["user_id"])).fetchall()
+        likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ?", (user_cookie["user_id"],)).fetchall()
         print("LIKESHERE", likes)
         likes = {
             "likes_user_fk" : likes["likes_user_fk"],
