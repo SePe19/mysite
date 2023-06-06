@@ -8,6 +8,7 @@ async function like(element) {
         body: formData
     })
     const data = await response.json()
+    console.log(data)
     const likeButtons = document.getElementsByClassName("like")
     console.log("LIKEBUTTONS",likeButtons)
     for (let i = 0; i < likeButtons.length; i++) {
