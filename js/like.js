@@ -1,6 +1,8 @@
-async function like(tweet_id) {
-    console.log(tweet_id, tweet_id.input)
+async function like(element) {
+    console.log(element, element.value)
+    const tweet_id = element.querySelector("input[name='tweet_id_likes']");
     tweet_id = tweet_id.value
+    console.log(tweet_id)
     const formData = new FormData()
     formData.append('tweet_id', tweet_id)
     const response = await fetch("/like", {
