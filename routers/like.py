@@ -14,7 +14,9 @@ def like():
             "likes_user_fk" : likes_user_fk,
             "likes_tweet_fk" : likes_tweet_fk
         }
+        print("17")
         likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ? AND likes_tweet_fk = ?", (likes_user_fk, likes_tweet_fk,)).fetchone()
+        print("19", likes)
         if likes:
             db.execute("DELETE FROM likes WHERE likes_user_fk = ? AND likes_tweet_fk = ?", (likes_user_fk, likes_tweet_fk,))
         else:
