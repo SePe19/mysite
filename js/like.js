@@ -1,5 +1,5 @@
 async function like(element) {
-    const user_id = element.querySelector("input[name='user_id']").value
+    const user_id = element.querySelector("input[name='user_id']")
     console.log("USER", user_id)
     const tweet_id = element.querySelector("input[name='tweet_id_likes']").value
     console.log("TWEET", tweet_id)
