@@ -29,24 +29,32 @@
 
 <script>
     
-        function closeLogout() {
-            const overlay = document.getElementById("overlay")
-            logout.classList.add("hidden")
-            overlay.classList.add("hidden")
-            document.body.style.overflow = "scroll";
-        }
+    function closeLogout() {
+        const overlay = document.getElementById("overlay")
+        logout.classList.add("hidden")
+        overlay.classList.add("hidden")
+        document.body.style.overflow = "scroll";
+    }
 
-        function userLogout() {
-            fetch('/logout', {
-            method: 'POST',
-            })
+    function userLogout() {
+        fetch('/logout', {
+        method: 'POST',
+        })
 
-            window.location.href = '/'
+        window.location.href = '/'
 
+        closeLogout()
+        window.location.reload()
+        window.location.reload()
+    }
+
+    window.addEventListener("click", function(event) {
+        console.log("BEFORE IF", event)
+        if (event.target === overlay) {
+            console.log(event)
             closeLogout()
-            window.location.reload()
-            window.location.reload()
         }
+    })
 
 </script>
 
