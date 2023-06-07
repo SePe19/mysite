@@ -347,7 +347,7 @@
         const formData = new FormData()
         formData.append("email", email)
         const response = await fetch("/delete-user", {
-            method: "POST",
+            method: "DELETE",
             body: formData
         })
         closeUpdateModal()
