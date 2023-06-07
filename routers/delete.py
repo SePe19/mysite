@@ -1,26 +1,19 @@
 from bottle import get, post, request, response
 import dbconnection
 from dotenv import load_dotenv
-import bcrypt
 import os
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-@post("/reset-password")
-def send_reset_email():
+@post("/delete-user")
+def send_delete_email():
     try:
         db = dbconnection.db()
         user_email = request.forms.get("email")
-        salt = bcrypt.gensalt()
-        dbconnection.validate_confirm_password()
-        user_password = bcrypt.hashpw(dbconnection.validate_password().encode("utf-8"), salt)
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
-            user_active = 0
-            db.execute("UPDATE users SET user_password = ?, user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
-            db.commit()
             email_verification(user_email, user["user_name"])
         return {"info reset":"Succesfully sent reset password email"}
     except Exception as ex:
@@ -30,13 +23,11 @@ def send_reset_email():
         if "db" in locals(): db.close()
 
 
-@get("/reset-password/<username>")
-def reset_password(username):
+@get("/delete-user/<username>")
+def delete_user(username):
     try:
-        print("I AM IN reset.py LINE 33 FORZAFC", username)
         db = dbconnection.db()
-        user_active = 1
-        rows_affected = db.execute("UPDATE users SET user_active = ? WHERE user_name = ?", (user_active, username)).rowcount
+        rows_affected = db.execute("DELETE * FROM users WHERE user_name = ?", (username)).rowcount
         db.commit()
         if not rows_affected:
             raise Exception("User not found")
@@ -59,14 +50,14 @@ def email_verification(user_email, username):
         password = os.getenv("TWITTER_KEY")
 
         message = MIMEMultipart("alternative")
-        message["Subject"] = "Password reset"
+        message["Subject"] = "User deletion"
         message["From"] = sender_email
         message["To"] = receiver_email
         try:
             import production
-            url = os.getenv("PYTHONANYWHERE_URL") + "/reset-password"
+            url = os.getenv("PYTHONANYWHERE_URL") + "/delete-user"
         except:
-            url = "http://127.0.0.1:3000/reset-password"
+            url = "http://127.0.0.1:3000/delete-user"
         
         text = """\
         Hi,
@@ -76,7 +67,7 @@ def email_verification(user_email, username):
         <html>
             <body>
                 <p>Hi {username}!<br>
-                    Welcome back! Upon clicking the link your password will be changed, and you can now log in with your new password!<br>
+                    We're sad to see you leave. By clicking the link, your account will be deleted.<br>
                     <a href="{url}/{username}">{url}/{username}</a>
                 </p>
             </body>
