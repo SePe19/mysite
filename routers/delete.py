@@ -1,4 +1,4 @@
-from bottle import get, post, delete, request, response
+from bottle import get, post, request, response
 import dbconnection
 from dotenv import load_dotenv
 import os
@@ -11,13 +11,11 @@ from email.mime.multipart import MIMEMultipart
 def send_delete_email():
     try:
         db = dbconnection.db()
-        user_email = request.json.get("email")
-        print("USEREMAILYAHOO", user_email)
-        user_email.strip()
+        user_email = request.forms.get("email")
         print("USEREMAILYAHOO", user_email)
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
-            email_delete_user(user_email, user["user_name"])
+            send_delete_user_email(user_email, user["user_name"])
         return {"info delete":"Succesfully sent delete user email"}
     except Exception as ex:
         print("reset", ex)
@@ -45,7 +43,7 @@ def delete_user(username):
         if "db" in locals(): db.close()
 
 
-def email_delete_user(user_email, username):
+def send_delete_user_email(user_email, username):
     try:
         load_dotenv(".env")
         sender_email = os.getenv("TWITTER_EMAIL")

@@ -21,7 +21,7 @@ def send_reset_email():
             user_active = 0
             db.execute("UPDATE users SET user_password = ?, user_active = ? WHERE user_email = ?", (user_password, user_active, user_email)).rowcount
             db.commit()
-            email_reset_password(user_email, user["user_name"])
+            send_reset_password_email(user_email, user["user_name"])
         return {"info reset":"Succesfully sent reset password email"}
     except Exception as ex:
         print("reset", ex)
@@ -51,7 +51,7 @@ def reset_password(username):
         if "db" in locals(): db.close()
 
 
-def email_reset_password(user_email, username):
+def send_reset_password_email(user_email, username):
     try:
         load_dotenv(".env")
         sender_email = os.getenv("TWITTER_EMAIL")

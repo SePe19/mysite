@@ -295,7 +295,7 @@
                 <input class="rounded-xl p-2 mt-4 w-80 bg-white" type="file" name="avatar_update" id="avatarUpload" accept=".jpg, .jpeg, .png, .webp, .gif"/>
                 <span class="text-white text-23 font-bold mt-4">Change cover picture</span>
                 <input class="rounded-xl p-2 mt-4 w-80 bg-white" type="file" name="cover_update" id="coverUpload" accept=".jpg, .jpeg, .png, .webp, .gif"/>
-                <button onclick="deleteUser(this.value.trim())" value="{{user_cookie['user_email']}}" class="bg-twitter-red text-white rounded-3xl px-6 py-2 font-semibold w-80 mt-4 mb-8 hover:bg-opacity-90">Delete user</button>
+                <button onclick="deleteUser(this.value)" value="{{user_cookie['user_email']}}" class="bg-twitter-red text-white rounded-3xl px-6 py-2 font-semibold w-80 mt-4 mb-8 hover:bg-opacity-90">Delete user</button>
                 <button onclick="update()" class="bg-twitter-blue text-white rounded-3xl px-6 py-2 font-semibold w-80 mt-4 mb-8 hover:bg-opacity-90">Confirm</button>
             </div>
     </section>
@@ -343,18 +343,16 @@
     }
 
     async function deleteUser(email) {
-        console.log(email)
-        const requestData = {
-            "email": email
+        if (email) {
+            console.log(email)
+            const formData = new FormData()
+            formData.append("email", email)
+            const response = await fetch("/delete-user", {
+                method: "POST",
+                body: formData
+            })
+            closeUpdateModal()
         }
-        const response = await fetch("/delete-user", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(requestData)
-        })
-        closeUpdateModal()
     }
 </script>
 

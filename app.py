@@ -82,6 +82,7 @@ import routers.tweet # -change
 import routers.follow
 import routers.like
 import routers.reset
+import routers.delete
 
 #############################
 
