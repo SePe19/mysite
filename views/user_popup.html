@@ -22,6 +22,7 @@
         overlay.classList.remove("hidden")
         document.body.style.overflow = "hidden";
         window.addEventListener("click", function(event) {
+            console.log("BEFORE IF", event)
             if (event.target === overlay) {
                 console.log(event)
                 closeLogout()
