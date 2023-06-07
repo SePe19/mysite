@@ -1,7 +1,7 @@
 from bottle import put
 import dbconnection
 
-@put("/mrbeast-followers")
+@put("/mrbeast-followers/following/tweets")
 def _():
     try:
         db = dbconnection.db()
