@@ -28,7 +28,7 @@ def send_delete_email():
 def delete_user(username):
     try:
         db = dbconnection.db()
-        rows_affected = db.execute("DELETE * FROM users WHERE user_name = ?", (username,)).rowcount
+        rows_affected = db.execute("DELETE FROM users WHERE user_name = ?", (username,)).rowcount
         db.commit()
         if not rows_affected:
             raise Exception("User not found")
