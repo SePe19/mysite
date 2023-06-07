@@ -342,8 +342,14 @@
         }
     }
 
-    function deleteUser(email) {
-        console.log(email)
+    async function deleteUser(email) {
+        const formData = new FormData()
+        formData.append("email", email)
+        const response = await fetch("/delete-user", {
+            method: "POST", 
+            body: formData
+        })
+        closeUpdateModal()
     }
 </script>
 

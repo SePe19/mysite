@@ -11,7 +11,7 @@ from email.mime.multipart import MIMEMultipart
 def send_delete_email():
     try:
         db = dbconnection.db()
-        user_email = request.forms.get("email")
+        user_email = request.forms.get("email", "")
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
             email_verification(user_email, user["user_name"])
