@@ -47,7 +47,8 @@
 }
 
 .bg-twitter-red:hover {
-  border-radius: 6px;
+  border-width: 6px;
+  border-radius: 100%;
   border-color: white;
 }
 
