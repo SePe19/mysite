@@ -1,10 +1,11 @@
 from bottle import put
 import dbconnection
 
-@put("/mrbeast-followers/<username>")
-def _(username):
+@put("/mrbeast-followers")
+def _():
     try:
         db = dbconnection.db()
+        username = "mrbeast"
         followers = 20700000
         following = 1924
         tweets = 6221
