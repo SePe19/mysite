@@ -310,6 +310,7 @@
         document.body.style.overflow = "hidden"
         window.addEventListener("click", function(event) {
             if (event.target === modalUpdate) {
+                console.log("CLICK", event.target)
                 modalUpdate.classList.add("hidden")
                 errorMessageUsername.classList.add("hidden")
                 overlay.classList.add("hidden")
