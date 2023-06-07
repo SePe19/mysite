@@ -249,7 +249,7 @@
     function togglePopup() {
         if (popup.classList.contains("hidden")) {
             popup.classList.remove("hidden")
-            removeEventListener("click", function(event) {
+            popup.addEventListener("click", function(event) {
                 console.log("BEFORE IF", event.target)
                 if (event.target === popup) {
                     console.log("LOL")
