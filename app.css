@@ -46,6 +46,11 @@
   background-color: rgb(255 0 0);
 }
 
+.bg-twitter-red:hover {
+  border-radius: 6px;
+  border-color: white;
+}
+
 *,
 ::before,
 ::after {
