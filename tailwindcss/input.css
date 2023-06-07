@@ -42,4 +42,9 @@
     .cover {
         max-height: 400px;
     }
+
+    .bg-twitter-red {
+        --tw-text-opacity: 1;
+        color: rgb(253 24 125 / var(--tw-text-opacity));
+    }
 }
