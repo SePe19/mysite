@@ -249,21 +249,23 @@
     function togglePopup() {
         if (popup.classList.contains("hidden")) {
             popup.classList.remove("hidden")
-            window.addEventListener("click", function(event) {
+            removeEventListener("click", function(event) {
                 console.log("BEFORE IF", event.target)
-                if (event.target === body) {
-                    console.log(event.target)
-                    closeLogout()
+                if (event.target === popup) {
+                    console.log("LOL")
                 }
+                console.log(event.target)
+                closeLogout()
             })
         } else {
             popup.classList.add("hidden")
             removeEventListener("click", function(event) {
                 console.log("BEFORE IF", event.target)
-                if (event.target === body) {
-                    console.log(event.target)
-                    closeLogout()
+                if (event.target === popup) {
+                    console.log("LOL")
                 }
+                console.log(event.target)
+                closeLogout()
             })
         }}
 
