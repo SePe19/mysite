@@ -44,10 +44,12 @@
 
 .bg-twitter-red {
   background-color: rgb(255 0 0);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
 .bg-twitter-red:hover {
-  border: 2px solid white;
+  border-color: white;
 }
 
 *,
