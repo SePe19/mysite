@@ -15,7 +15,7 @@ def send_delete_email():
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
             email_verification(user_email, user["user_name"])
-        return {"info reset":"Succesfully sent reset password email"}
+        return {"info delete":"Succesfully sent delete user email"}
     except Exception as ex:
         print("reset", ex)
         return {"Error reset": ex}
