@@ -54,7 +54,7 @@
 }
 
 .delete-user-button:hover:before {
-  content: "Are You Sure?";
+  content: "Are You Sure You Want To Delete Your Account?";
 }
 
 .delete-user-button:before {
