@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+
+@layer components {
+    .word-wrap {
+        word-wrap: break-word;
+    }
+
+    .liked-tweet {
+        --tw-text-opacity: 1;
+        color: rgb(253 24 125 / var(--tw-text-opacity));
+    }
+    
+    .not-liked-tweet {
+        --tw-text-opacity: 1;
+        color: rgb(113 118 123 / var(--tw-text-opacity));
+    }
+    
+    .max-h-512 {
+        max-height: 512px;
+    }
+    
+    .bg-red {
+        background-color: red;
+    }
+    
+    .avatar {
+        height: 9rem;
+        width: 9rem;
+    }
+    
+    .fit-avatar {
+        height: fit-content + 1px;
+        width: fit-content + 1px;
+    }
+    
+    .cover {
+        max-height: 400px;
+    }
+}
