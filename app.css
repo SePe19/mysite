@@ -45,8 +45,8 @@
 .bg-twitter-red {
   background-color: rgb(255 0 0);
   border: 2px solid transparent;
-  transition: border-color 0.3s;
-  transition: background-color 0.3s;
+  transition: border-color 0.5s;
+  transition: background-color 0.5s;
 }
 
 .bg-twitter-red:hover {
