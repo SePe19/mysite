@@ -242,18 +242,32 @@
     </div>
     <!-- left end -->
 
-    <script>
+<script>
 
-        const popup = document.getElementById("popup")
+    const popup = document.getElementById("popup")
 
-        function togglePopup() {
-            if (popup.classList.contains("hidden")) {
-                popup.classList.remove("hidden")
-            } else {
-                popup.classList.add("hidden")
+    function togglePopup() {
+        if (popup.classList.contains("hidden")) {
+            popup.classList.remove("hidden")
+            window.addEventListener("click", function(event) {
+                console.log("BEFORE IF", event.target)
+                if (event.target === overlay) {
+                    console.log(event.target)
+                    closeLogout()
+                }
+            })
+        } else {
+            popup.classList.add("hidden")
+            removeEventListener("click", function(event) {
+                console.log("BEFORE IF", event.target)
+                if (event.target === overlay) {
+                    console.log(event.target)
+                    closeLogout()
+                }
+            })
         }}
 
-        
-    </script>
+    
+</script>
 </body>
 </html>
