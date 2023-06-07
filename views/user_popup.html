@@ -24,17 +24,9 @@
         window.addEventListener("click", function(event) {
             if (event.target === overlay) {
                 console.log(event)
-                closePopupModal()
+                closeLogout()
             }
         })
-    }
-
-    function closePopupModal() {
-        console.log("close")
-        const popup = document.getElementById("popup")
-        popup.classList.add("hidden")
-        overlay.classList.add("hidden")
-        document.body.style.overflow = "scroll"
     }
 
 </script>
