@@ -42,15 +42,23 @@
   max-height: 400px;
 }
 
-.bg-twitter-red {
+.delete-user-button {
   background-color: rgb(255 0 0);
   border: 2px solid transparent;
   transition: border-color 0.5s, background-color 0.5s;
 }
 
-.bg-twitter-red:hover {
+.delete-user-button:hover {
   background-color: rgb(255, 70, 70);
   border-color: white;
+}
+
+.delete-user-button:hover:before {
+  content: "Are You Sure?";
+}
+
+.delete-user-button:before {
+  content: "Delete Account";
 }
 
 *,
