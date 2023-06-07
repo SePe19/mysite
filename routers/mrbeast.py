@@ -9,7 +9,7 @@ def _():
         followers = 20700000
         following = 1924
         tweets = 6221
-        db.execute("UPDATE users SET user_total_followers = ?, user_total_following = ?, user_total_tweets = ? WHERE user_name = ?", (followers, following, tweets, username))
+        db.execute(f"UPDATE users SET user_total_followers = ?, user_total_following = ?, user_total_tweets = ? WHERE user_name = ?", (followers, following, tweets, username))
 
         db.commit()
 
