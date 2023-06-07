@@ -12,6 +12,7 @@ def send_delete_email():
     try:
         db = dbconnection.db()
         user_email = request.forms.get("email")
+        print("USEREMAILYAHOO", user_email)
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
             email_delete_user(user_email, user["user_name"])
