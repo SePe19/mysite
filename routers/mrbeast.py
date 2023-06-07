@@ -1,20 +1,14 @@
-from bottle import post, redirect, request, response, get, template, static_file, put
-from dotenv import load_dotenv
-import os
+from bottle import put
 import dbconnection
 
 @put("/mrbeast-followers/<username>")
-def update(username):
+def _(username):
     try:
         db = dbconnection.db()
         followers = 20700000
-        db.execute(f"UPDATE users SET user_total_followers = ? WHERE user_name = ?", (followers, username))
-        
         following = 1924
-        db.execute(f"UPDATE users SET user_total_following = ? WHERE user_name = ?", (following, username))
-        
-        tweets = 6216
-        db.execute(f"UPDATE users SET user_total_tweets = ? WHERE user_name = ?", (tweets, username))
+        tweets = 6221
+        db.execute("UPDATE users SET user_total_followers = ?, user_total_following = ?, user_total_tweets = ? WHERE user_name = ?", (followers, following, tweets, username))
 
         db.commit()
 
