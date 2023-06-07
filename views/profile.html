@@ -344,13 +344,11 @@
 
     async function deleteUser(email) {
         console.log(email)
-        // const formData = new FormData()
-        // formData.append("email", email)
         const requestData = {
             "email": email
         }
         const response = await fetch("/delete-user", {
-            method: "DELETE",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },

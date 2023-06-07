@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-@delete("/delete-user")
+@post("/delete-user")
 def send_delete_email():
     try:
         db = dbconnection.db()
