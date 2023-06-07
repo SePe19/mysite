@@ -14,15 +14,17 @@
     </div>
 
 
-<script>
-    
-    function openLogout() {
-        const popup = document.getElementById("popup")
-        popup.classList.remove("hidden")
-        overlay.classList.remove("hidden")
-        document.body.style.overflow = "hidden";
-    }
+    <script>
+        const logout = document.getElementById("logout")
 
-</script>
+        function openLogout() {
+            const overlay = document.getElementById("overlay")
+            logout.classList.remove("hidden")
+            overlay.classList.remove("hidden")
+            document.body.style.overflow = "hidden";
+            popup.classList.add("hidden")
+        }
+
+    </script>
 </body>
 </html>
