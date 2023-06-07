@@ -11,10 +11,10 @@ from email.mime.multipart import MIMEMultipart
 def send_delete_email():
     try:
         db = dbconnection.db()
-        user_email = request.forms.get("email", "")
+        user_email = request.forms.get("email")
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if user:
-            email_verification(user_email, user["user_name"])
+            email_delete_user(user_email, user["user_name"])
         return {"info delete":"Succesfully sent delete user email"}
     except Exception as ex:
         print("reset", ex)
@@ -42,7 +42,7 @@ def delete_user(username):
         if "db" in locals(): db.close()
 
 
-def email_verification(user_email, username):
+def email_delete_user(user_email, username):
     try:
         load_dotenv(".env")
         sender_email = os.getenv("TWITTER_EMAIL")
