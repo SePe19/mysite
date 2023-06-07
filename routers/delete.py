@@ -1,4 +1,4 @@
-from bottle import get, post, request, response
+from bottle import get, delete, request, response
 import dbconnection
 from dotenv import load_dotenv
 import os
@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-@post("/delete-user")
+@delete("/delete-user")
 def send_delete_email():
     try:
         db = dbconnection.db()
