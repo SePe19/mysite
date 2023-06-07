@@ -27,9 +27,10 @@ def send_delete_email():
 @get("/delete-user/<username>")
 def delete_user(username):
     try:
-        db = dbconnection.db()
+        load_dotenv('.env')
         user = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
         if user: response.delete_cookie("user")
+        db = dbconnection.db()
         rows_affected = db.execute("DELETE FROM users WHERE user_name = ?", (username,)).rowcount
         db.commit()
         if not rows_affected:
