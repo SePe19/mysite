@@ -302,16 +302,14 @@
 
 <script>
     const modalUpdate = document.getElementById("modal-update")
+    const overlay = document.getElementById("overlay")
     
     function updateModal() {
-        const overlay = document.getElementById("overlay")
         modalUpdate.classList.remove("hidden")
         overlay.classList.remove("hidden")
         document.body.style.overflow = "hidden"
         window.addEventListener("click", function(event) {
-            console.log("CLICK", event.target)
             if (event.target === overlay) {
-                console.log("IF CLICK", event.target)
                 closeUpdateModal()
             }
         })

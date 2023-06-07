@@ -14,17 +14,28 @@
     </div>
 
 
-    <script>
+<script>
+    const popup = document.getElementById("popup")
+    const overlay = document.getElementById("overlay")
+    
+    function openLogout() {
         const logout = document.getElementById("logout")
+        logout.classList.remove("hidden")
+        overlay.classList.remove("hidden")
+        document.body.style.overflow = "hidden";
+        window.addEventListener("click", function(event) {
+            if (event.target === overlay) {
+                closePopupModal()
+            }
+        })
+    }
 
-        function openLogout() {
-            const overlay = document.getElementById("overlay")
-            logout.classList.remove("hidden")
-            overlay.classList.remove("hidden")
-            document.body.style.overflow = "hidden";
-            popup.classList.add("hidden")
-        }
+    function closePopupModal() {
+        popup.classList.add("hidden")
+        overlay.classList.add("hidden")
+        document.body.style.overflow = "scroll"
+    }
 
-    </script>
+</script>
 </body>
 </html>
