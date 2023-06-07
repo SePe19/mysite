@@ -5,7 +5,6 @@ import pathlib
 import dbconnection
 import os
 
-# -*- coding: utf-8 -*-
 
 @post("/f10b10c9cc6e4a13ae09a13d1181a6b1")
 def git_update():
