@@ -18,8 +18,8 @@
     
     function openLogout() {
         const overlay = document.getElementById("overlay")
-        const logout = document.getElementById("logout")
-        logout.classList.remove("hidden")
+        const popup = document.getElementById("popup")
+        popup.classList.remove("hidden")
         overlay.classList.remove("hidden")
         document.body.style.overflow = "hidden";
         window.addEventListener("click", function(event) {
@@ -32,6 +32,7 @@
 
     function closePopupModal() {
         console.log("close")
+        const popup = document.getElementById("popup")
         popup.classList.add("hidden")
         overlay.classList.add("hidden")
         document.body.style.overflow = "scroll"
