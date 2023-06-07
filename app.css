@@ -43,8 +43,7 @@
 }
 
 .bg-twitter-red {
-  --tw-text-opacity: 1;
-  color: rgb(253 24 125 / var(--tw-text-opacity));
+  background-color: rgb(253 24 125);
 }
 
 *,
