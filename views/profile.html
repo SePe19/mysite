@@ -344,8 +344,9 @@
 
     async function deleteUser(email) {
         console.log(email)
+        user_email = email
         const formData = new FormData()
-        formData.append("email", email)
+        formData.append("email", user_email)
         const response = await fetch("/delete-user", {
             method: "DELETE",
             body: formData
