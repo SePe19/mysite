@@ -309,8 +309,9 @@
         overlay.classList.remove("hidden")
         document.body.style.overflow = "hidden"
         window.addEventListener("click", function(event) {
+            console.log("CLICK", event.target)
             if (event.target === modalUpdate) {
-                console.log("CLICK", event.target)
+                console.log("IF CLICK", event.target)
                 closeUpdateModal()
             }
         })
