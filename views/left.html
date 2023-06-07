@@ -251,7 +251,7 @@
             popup.classList.remove("hidden")
             window.addEventListener("click", function(event) {
                 console.log("BEFORE IF", event.target)
-                if (event.target === overlay) {
+                if (event.target === body) {
                     console.log(event.target)
                     closeLogout()
                 }
@@ -260,7 +260,7 @@
             popup.classList.add("hidden")
             removeEventListener("click", function(event) {
                 console.log("BEFORE IF", event.target)
-                if (event.target === overlay) {
+                if (event.target === body) {
                     console.log(event.target)
                     closeLogout()
                 }
