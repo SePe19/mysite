@@ -344,12 +344,17 @@
 
     async function deleteUser(email) {
         console.log(email)
-        user_email = email
-        const formData = new FormData()
-        formData.append("email", user_email)
+        // const formData = new FormData()
+        // formData.append("email", email)
+        const requestData = {
+            "email": email
+        }
         const response = await fetch("/delete-user", {
             method: "DELETE",
-            body: formData
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestData)
         })
         closeUpdateModal()
     }
