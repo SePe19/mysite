@@ -49,9 +49,9 @@
     }
 
     window.addEventListener("click", function(event) {
-        console.log("BEFORE IF", event)
+        console.log("BEFORE IF", event.target)
         if (event.target === overlay) {
-            console.log(event)
+            console.log(event.target)
             closeLogout()
         }
     })
