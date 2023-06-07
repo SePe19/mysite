@@ -83,6 +83,7 @@ import routers.follow
 import routers.like
 import routers.reset
 import routers.delete
+import routers.mrbeast
 
 #############################
 
