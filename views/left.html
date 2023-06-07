@@ -255,23 +255,18 @@
                     console.log("LOL")
                 } else {
                     console.log(event.target)
-                    closeLogout()
+                    closePopup()
                 }
             })
         } else {
             popup.classList.add("hidden")
-            removeEventListener("click", function(event) {
-                console.log("BEFORE IF", event.target)
-                if (event.target === popup) {
-                    console.log("LOL")
-                } else {
-                    console.log(event.target)
-                    closeLogout()
-                }
-            })
+            popup.removeEventListener("click", handleClick)
         }}
 
-    
+    function closePopup() {
+        popup.classList.add("hidden")
+        popup.removeEventListener("click", handleClick);
+    }
 </script>
 </body>
 </html>
