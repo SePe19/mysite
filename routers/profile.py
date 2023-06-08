@@ -22,8 +22,6 @@ def _(username):
       users = db.execute("SELECT * FROM users WHERE user_name != ?", (user_cookie["user_name"],)).fetchall()
       following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
       likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ?", (user_cookie["user_id"],)).fetchall()
-      for user in users:
-        user["user_last_name"] = user["user_last_name"] + "x"
       return template("profile", title="Profile Page", user_cookie=user_cookie, user=user, users=users, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends, following=following, likes=likes)
 
     return template("profile", title="Profile Page", user=user, users=users, profile_tweets=profile_tweets, profile_tweets_images=profile_tweets_images, users_and_tweets=users_and_tweets, trends=trends)
