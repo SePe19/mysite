@@ -23,8 +23,7 @@ def user():
   try:
     load_dotenv(".env")
     user = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
-    print("dbconnection cookie", user)
-    if user:
+    if user and user is not None:
       return user
     else:
       return None
@@ -42,7 +41,6 @@ EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 def validate_email():
   error = f"User email is not valid"
   email = request.forms.get("email", "")
-  print(email)
   email = email.strip()
   if len(email) < EMAIL_MIN:
     response.status = 400 
