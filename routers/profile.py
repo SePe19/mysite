@@ -18,7 +18,7 @@ def _(username):
     profile_tweets_images = db.execute("SELECT tweet_image FROM users_and_tweets WHERE user_name=? AND tweet_image != '' ORDER BY tweet_created_at DESC LIMIT 6", (username,)).fetchall()
     users_and_tweets = db.execute("SELECT * FROM users_and_tweets").fetchall()
     trends = db.execute("SELECT * FROM trends").fetchall()
-    if user_cookie and user_cookie is not None:
+    if user_cookie:
       users = db.execute("SELECT * FROM users WHERE user_name != ?", (user_cookie["user_name"],)).fetchall()
       following = db.execute("SELECT followee_id FROM followers WHERE follower_id = ?", (user_cookie["user_id"],)).fetchall()
       likes = db.execute("SELECT * FROM likes WHERE likes_user_fk = ?", (user_cookie["user_id"],)).fetchall()

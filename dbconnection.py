@@ -23,7 +23,7 @@ def user():
   try:
     load_dotenv(".env")
     user = request.get_cookie("user", secret=os.getenv('MY_SECRET'))
-    if user and user is not None:
+    if user:
       return user
     else:
       return None
